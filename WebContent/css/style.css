@@ -1,0 +1,24 @@
+
+	table, th, td{border: 1px solid black;}
+	th, td{text-align:center;}
+	.width-full{width:100%}
+	.height-700{height:700px}
+	.margin-auto{margine: 0 auto}
+	.height-20{height:20%}
+	/* main */
+	#logout-tab-layout-td1{width:90%}
+	#logout-tab-layout-td2{width:10%}
+	#logout-tab-layout-tr{height:60}
+	
+	/* mypage */
+	#mypage-tab-layout-td1{width:90%}
+	#mypage-tab-layout-td2{width:10%}
+	#mypage-tab-layout-tr{height:60}
+	
+	/* user_login */
+	#user-login-layout{width: 250px; margin: 150px auto}
+	#user-login-form{border:1px solid black}
+	
+	/* admin_login */
+	#admin-login-layout{width: 250px; margin: 150px auto}
+	#admin-login-form{border:1px solid black}
