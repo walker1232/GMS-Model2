@@ -13,7 +13,7 @@
 		이름:<input type="text" name="name"/><br />
 		비밀번호:<input type="text" name="pass"/><br />
 		주민번호:<input type="text" name="ssn" /><br />
-		<input type="hidden" name="action" value="move"/>	
+		<input type="hidden" name="action" value="join"/>	
 		<input type="hidden" name="page" value="join_result"/>
 		<input type="submit" value="가입" />
 	</form>

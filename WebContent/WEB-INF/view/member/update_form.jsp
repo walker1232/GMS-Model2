@@ -12,7 +12,7 @@
 	ID:<input type="text" name="memid"/>
 	PW:<input type="text" name="pass" />
 	NEWPW:<input type="text" name="newpass"/>
-	<input type="hidden" name="action" value="move"/>	
+	<input type="hidden" name="action" value="update"/>	
 	<input type="hidden" name="page" value="update_result"/>
 	<input type="submit" value="변경" />
 </form>

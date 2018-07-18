@@ -11,7 +11,7 @@
 	<form action="<%= ctx %>/member.do">
 	ID:<input type="text" name="memid"/>
 	PW:<input type="text" name="pass" />
-	<input type="hidden" name="action" value="move"/>	
+	<input type="hidden" name="action" value="delete"/>	
 	<input type="hidden" name="page" value="delete_result"/>
 	<input type="submit" value="삭제"/>
 </form>

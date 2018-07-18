@@ -12,10 +12,10 @@
 	<h1>로그인</h1>
 	<form id="user-login-form" action="<%=ctx %>/member.do" >
 	 아이디:<input type="text" name= "userid" /><br />
-	 비밀번호:<input type="text" name= "password" /><br />
-	 <input type="hidden" name="action" value="move"/>	
+	 비밀번호:<input type="text" name= "pass" /><br />
+	 <input type="hidden" name="action" value="login"/>	
 	<input type="hidden" name="page" value="login_result"/>
-	 <input type="submit" value="전송" />
+	 <input type="submit" value="로그인" />
 	</form>
 	</div>
 </body>

@@ -10,7 +10,7 @@
 	<h3>팀이름 검색</h3>
 	<form action="<%=ctx %>/member.do">
 		팀이름:<input type="text" name="teamid"/> <input type="submit" value="검색"/> 
-		<input type="hidden" name="action" value="move"/>	
+		<input type="hidden" name="action" value="searchMemberByTeam"/>	
 		<input type="hidden" name="page" value="search_team_result"/>
 	</form>
 </body>
