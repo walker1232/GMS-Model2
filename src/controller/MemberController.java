@@ -25,7 +25,7 @@ public class MemberController extends HttpServlet {
 		System.out.println("여기는 MemberController");
 		Sentry.init(request);
 		System.out.println("액션:"+Sentry.cmd.getAction());
-		/*String action = request.getParameter("action");	// DB 접근을 구분하기위해 사용
+		/*String action = request.getParameter("action");	// DB 접근을 구분하기위해 사용한다.
 		String page = request.getParameter("page");*/
 		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
 		case MOVE:
