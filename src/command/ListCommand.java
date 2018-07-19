@@ -1,13 +1,19 @@
 package command;
 
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class DeleteCommand extends Command{
-	public DeleteCommand(HttpServletRequest request) {
+public class ListCommand extends Command{
+	
+	public ListCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -18,13 +24,14 @@ public class DeleteCommand extends Command{
 	public void execute() {
 		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("-------------------회원탈퇴 들어옴----------------------");
-			MemberBean mem = new MemberBean();
-			mem.setMemID(request.getParameter("memid"));
-			mem.setPassword(request.getParameter("pass"));
-			MemberServiceImpl.getinstance().deleteMember(mem);
-			System.out.println("-----------------회원탈퇴 성공--------------------------");
-			break;
+		System.out.println("회원목록 들어옴");
+		List<MemberBean> memList = new ArrayList<>();
+		memList = MemberServiceImpl.getinstance().listMember();
+		for(MemberBean m : memList) {
+			System.out.println(m);
+		}
+		System.out.println("회원목록 출력 성공");
+		break;
 		default:
 			break;
 		}

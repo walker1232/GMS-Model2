@@ -11,7 +11,7 @@
 </head>
 <body>
 	<form action="<%=ctx%>/member.do">
-		<input type="hidden" name="action" value="memList"/>	
+		<input type="hidden" name="action" value="list"/>	
 		<input type="hidden" name="page" value="member_list"/>
 		<input type="submit" value="목록"/>
 	</form>

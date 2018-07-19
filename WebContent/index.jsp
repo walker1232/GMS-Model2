@@ -27,6 +27,7 @@
 					<li><a href="<%=ctx %>/member.do?action=move&page=member_list">회원목록</a></li>
 					<li><a href="<%=ctx %>/member.do?action=move&page=search_team_form">팀이름검색</a></li>
 					<li><a href="<%=ctx %>/member.do?action=move&page=search_id_form">아이디검색</a></li>
+					<li><a href="<%=ctx %>/member.do?action=count&page=search_id_form">인원수</a></li>
 			</ul>
 			<!-- <a href="mypage.html">로그아웃</a></td> -->
 		</tr>

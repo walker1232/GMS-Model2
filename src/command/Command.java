@@ -1,9 +1,18 @@
 package command;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class Command implements Order{
+	protected HttpServletRequest request;
 	protected String action, domain, page, view;
 	public String getAction() {
 		return action;
+	}
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
 	}
 	public void setAction(String action) {
 		this.action = action;
