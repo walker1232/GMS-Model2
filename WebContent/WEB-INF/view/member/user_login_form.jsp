@@ -14,7 +14,7 @@
 	 아이디:<input type="text" name= "memid" /><br />
 	 비밀번호:<input type="text" name= "pass" /><br />
 	 <input type="hidden" name="action" value="login"/>	
-	<input type="hidden" name="page" value="login_result"/>
+	<input type="hidden" name="page" value="mypage2"/>
 	 <input type="submit" value="로그인" />
 	</form>
 	</div>

@@ -16,7 +16,7 @@ public class DeleteCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("-------------------회원탈퇴 들어옴----------------------");
 			MemberBean mem = new MemberBean();

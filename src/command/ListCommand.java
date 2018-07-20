@@ -22,7 +22,7 @@ public class ListCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 		System.out.println("회원목록 들어옴");
 		List<MemberBean> memList = new ArrayList<>();

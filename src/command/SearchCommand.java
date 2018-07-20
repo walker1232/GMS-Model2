@@ -17,11 +17,13 @@ public class SearchCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 			System.out.println("----팀원 찿기 들어옴----");
 			MemberServiceImpl.getinstance().searchByName("teamid");
 			System.out.println("----팀원 찿기 성공----");
+			break;
+		default:
 			break;
 		}
 		super.execute();

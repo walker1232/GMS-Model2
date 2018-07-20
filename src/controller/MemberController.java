@@ -24,7 +24,7 @@ public class MemberController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("여기는 MemberController");
-		Sentry.init(request);
+		Sentry.init(request, response);
 		System.out.println("액션:"+Sentry.cmd.getAction());
 		/*String action = request.getParameter("action");	// DB 접근을 구분하기위해 사용한다.
 		String page = request.getParameter("page");*/
@@ -100,7 +100,13 @@ public class MemberController extends HttpServlet {
 			memLogin.setPassword(request.getParameter("pass"));*/
 			//MemberServiceImpl.getinstance().login(memLogin);
 			//response.sendRedirect(request.getContextPath());
-			Carrier.redirect(request, response, "");
+			//Carrier.redirect(request, response, "");
+			if(request.getAttribute("match").equals("TRUE")){
+				Carrier.forward(request, response);
+			}else {
+				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
+			}
+			
 			break;
 		default:
 			break;

@@ -16,7 +16,7 @@ public class RetrieveCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(Sentry.cmd.domain.toUpperCase())) {
+		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 		System.out.println("----회원찿기 들어옴----");
 		MemberServiceImpl.getinstance().searchById("memid");

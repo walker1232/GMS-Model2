@@ -28,7 +28,6 @@ public class CountCommand extends Command{
 			System.out.println("----총인원수 성공----");
 			break;
 		default:
-			System.out.println("defaut");
 			break;
 		}
 		super.execute();
