@@ -17,12 +17,12 @@ import command.Sentry;
 import enums.Action;
 import service.MemberServiceImpl;
 
-@WebServlet("/member.do")	//URL Mapping
+@WebServlet({"/member.do","/admin.do"})	//URL Mapping
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("여기는 MemberController");
 		Sentry.init(request, response);
 		System.out.println("액션:"+Sentry.cmd.getAction());
@@ -114,9 +114,9 @@ public class MemberController extends HttpServlet {
 		/*request.getRequestDispatcher("/WEB-INF/view/member/"+page+".jsp").forward(request, response);*/
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		doGet(request, response);
-	}
+	}*/
 	
 }

@@ -48,6 +48,7 @@ public class Commander{
 		case COUNT:
 			System.out.println("----총 인원수----");
 			cmd = new CountCommand(request);
+			break;
 		default:
 			break;
 		}

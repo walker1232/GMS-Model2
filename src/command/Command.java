@@ -2,10 +2,12 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
+import lombok.Data;
+@Data
 public class Command implements Order{
 	protected HttpServletRequest request;
 	protected String action, domain, page, view;
-	public String getAction() {
+	/*public String getAction() {
 		return action;
 	}
 	public HttpServletRequest getRequest() {
@@ -34,7 +36,7 @@ public class Command implements Order{
 	}
 	public void setView(String view) {
 		this.view = view;
-	}
+	}*/
 	@Override
 	public void execute() {
 		this.view = "/WEB-INF/view/"+domain+"/"+page+".jsp";

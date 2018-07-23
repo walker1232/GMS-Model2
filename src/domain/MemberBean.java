@@ -1,9 +1,12 @@
 package domain;
 
+import lombok.Data;
+
+@Data
 public class MemberBean {
 	public String memID, teamID, name, ssn, age ,roll, password;
 
-	public String getMemID() {
+	/*public String getMemID() {
 		return memID;
 	}
 
@@ -57,7 +60,7 @@ public class MemberBean {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
+	}*/
 
 	@Override
 	public String toString() {
