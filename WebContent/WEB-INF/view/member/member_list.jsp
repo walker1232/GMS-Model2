@@ -15,5 +15,10 @@
 		<input type="hidden" name="page" value="member_list"/>
 		<input type="submit" value="목록"/>
 	</form>
+	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
+		<input type="hidden" name="action" value="list">
+		<input type="hidden" name="page" value="member_list">
+		<input type="submit" name="list">
+	</form>
 </body>
 </html>

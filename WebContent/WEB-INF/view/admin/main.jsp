@@ -19,5 +19,19 @@
 	
 </div>
 
+<script>
+	function move(domain, action, page){
+		console.log('클릭 테스트 성공 ${ctx}')
+		alert('클릭 테스트 성공 ${ctx}');
+		location.href = "${ctx}/"+domain+".do?action="+action+"&page="+page;
+	}
+</script>
+
+<script>
+	function trans(domain, action, page){
+		return true;
+	}
+</script>
+
 </body>
 </html>

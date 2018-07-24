@@ -10,13 +10,21 @@
 <body>
 <div id="user-login-layout">
 	<h1>로그인</h1>
-	<form id="user-login-form" action="<%=ctx %>/member.do" >
+	<%-- <form id="user-login-form" action="<%=ctx %>/member.do" >
 	 아이디:<input type="text" name= "memid" /><br />
 	 비밀번호:<input type="text" name= "pass" /><br />
 	 <input type="hidden" name="action" value="login"/>	
 	<input type="hidden" name="page" value="mypage2"/>
 	 <input type="submit" value="로그인" />
+	</form> --%>
+	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
+	아이디: <input type="text" name="memid">
+	비밀번호: <input type="text" name= "pass">
+	<input type="hidden" name="action" value="login">
+	<input type="hidden" name="page" value="mypage2">
+	<input type="submit" value="Login">
 	</form>
+	
 	</div>
 </body>
 </html>

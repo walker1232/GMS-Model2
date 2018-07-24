@@ -49,6 +49,7 @@ public class Commander{
 			System.out.println("----총 인원수----");
 			cmd = new CountCommand(request);
 			break;
+		
 		default:
 			break;
 		}

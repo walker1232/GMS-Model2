@@ -8,10 +8,15 @@
 </head>
 <body>
 	<h3>아이디 검색</h3>
-	<form action="<%=ctx %>/member.do">
+	<%-- <form action="<%=ctx %>/member.do">
 		아이디 <input type="text" name="memid"/> <input type="submit" value="찿기"/>
 		<input type="hidden" name="action" value="retrieve"/>	
 		<input type="hidden" name="page" value="search_id_result"/>
+	</form> --%>
+	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
+		ID: <input type="text" name="memid"> <input type="submit" value="search">
+		<input type="hidden" name="action" value="retrieve">
+		<input type="hidden" name="page" value="search_id_result">
 	</form>
 </body>
 </html>

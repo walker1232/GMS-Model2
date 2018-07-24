@@ -1,12 +1,11 @@
 package enums;
 
-public enum Domain {
-	MEMBER, EXAM, PROJECTTEAM, RECORD, SUBJECT, CTX, WEBPATH, MAIN;
+public enum Term {
+	WEBPATH, MAIN;
 	@Override
 	public String toString() {
 		String res = "";
 		switch(this) {
-		case CTX: res ="ctx"; break;
 		case WEBPATH: res = "/WEB-INF/view/"; break;
 		case MAIN: res = "/main.jsp"; break;
 		default: break;
