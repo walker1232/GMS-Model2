@@ -8,15 +8,22 @@
 </head>
 <body>
 	<h3>아이디 검색</h3>
-	<%-- <form action="<%=ctx %>/member.do">
-		아이디 <input type="text" name="memid"/> <input type="submit" value="찿기"/>
-		<input type="hidden" name="action" value="retrieve"/>	
-		<input type="hidden" name="page" value="search_id_result"/>
-	</form> --%>
-	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
-		ID: <input type="text" name="memid"> <input type="submit" value="search">
+	<form id="search_id_form" >
+		ID: <input type="text" name="memid"> <input id="searchIdBtn" type="submit" value="search">
 		<input type="hidden" name="action" value="retrieve">
 		<input type="hidden" name="page" value="search_id_result">
 	</form>
+<script>
+	document.getElementById('searchIdBtn').addEventListener('click', function(){
+		var form = document.getElementById('search_id_form');
+		form.action = "${ctx}/member.do";
+		form.method = "post";
+		if(form.memid.value == ""){
+			alert('id를 공백으로 하면 안됩니다');
+			document.memid.focus();
+		}
+		form.submit();
+	});
+</script>
 </body>
 </html>

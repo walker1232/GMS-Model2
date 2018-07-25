@@ -35,8 +35,8 @@ public class MemberController extends HttpServlet {
 				Carrier.forward(request, response);
 			break;
 		case JOIN:
-		
 			System.out.println("JOIN");
+			System.out.println("=========js를 통한 JOIN=======");
 			Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 			break;
 		case LIST:
@@ -65,6 +65,7 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response, "");
 			break;
 		case LOGIN:
+			System.out.println("=============js login===============");
 			if(request.getAttribute("match").equals("TRUE")){
 				Carrier.forward(request, response);
 			}else {

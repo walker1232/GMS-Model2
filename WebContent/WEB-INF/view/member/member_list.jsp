@@ -10,11 +10,11 @@
 	<link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
-	<form action="<%=ctx%>/member.do">
+	<%-- <form action="<%=ctx%>/member.do">
 		<input type="hidden" name="action" value="list"/>	
 		<input type="hidden" name="page" value="member_list"/>
 		<input type="submit" value="목록"/>
-	</form>
+	</form> --%>
 	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
 		<input type="hidden" name="action" value="list">
 		<input type="hidden" name="page" value="member_list">

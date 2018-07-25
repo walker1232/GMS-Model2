@@ -8,25 +8,36 @@
 	<title>회원가입화면</title>
 </head>
 <body>
-	<%-- <form action="<%=ctx %>/member.do">
-		아이디:<input type="text" name="memid"/><br />
-		이름:<input type="text" name="name"/><br />
-		비밀번호:<input type="text" name="pass"/><br />
-		주민번호:<input type="text" name="ssn" /><br />
-		<input type="hidden" name="action" value="join"/>	
-		<input type="hidden" name="page" value="join_result"/>
-		<input type="submit" value="가입" />
-	</form> --%>
-	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
+	<form id="join_form" >
 		ID: <input type="text" name="memid"><br />
 		Name: <input type="text" name="name"><br />
 		Pass: <input type="text" name="pass"><br />
 		Ssn : <input type="text" name="ssn"><br />
 		<input type="hidden" name="action" value="join">
 		<input type="hidden" name="page" value="join_result">
-		<input type="submit" value="Join">
-	
+		<input id="JoinFormBtn" type="submit" value="Join">
 	</form>
-	
+	<script>
+		document.getElementById('JoinFormBtn').addEventListener('click', function(){
+			alert('조인 클릭 내부');
+			var form = document.getElementById('join_form');
+			form.action = "${ctx}/member.do";
+			form.method = "post";
+			if(form.memid.value == ""){
+				alert('id를 공백으로 하면 안됩니다');
+				<a location href="${ctx}/"></a>
+			}else if(form.pass.value == ""){
+				alert('pass를 공백으로 하면 안됩니다');
+				document.pass.focus();
+			}else if(form.name.value == ""){
+				alert('name를 공백으로 하면 안됩니다');
+				document.name.focus();
+			}else if(form.ssn.value == ""){
+				alert('ssn를 공백으로 하면 안됩니다');
+				document.ssn.focus();
+			}
+			form.submit();
+		});
+	</script>
 </body>
 </html>

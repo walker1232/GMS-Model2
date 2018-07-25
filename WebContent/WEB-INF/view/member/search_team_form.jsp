@@ -8,15 +8,22 @@
 </head>
 <body>
 	<h3>팀이름 검색</h3>
-	<%-- <form action="<%=ctx %>/member.do">
-		팀이름:<input type="text" name="teamid"/> <input type="submit" value="검색"/> 
-		<input type="hidden" name="action" value="search"/>	
-		<input type="hidden" name="page" value="search_team_result"/>
-	</form> --%>
-	<form action="${ctx}/member.do" onsubmit="return trans()" method="get">
-		TeamName: <input type="text" name="teamid"> <input type="submit" value="search" >
+	<form id="search_team_form" >
+		TeamName: <input type="text" name="teamid"> <input id="searchTeamBtn" type="submit" value="search" >
 		<input type="hidden" name="action" value="search">
 		<input type="hidden" name="page" value="search_team_rewult">
 	</form>
+<script>
+	document.getElementById('searchTeamForm').addEventListener('click', function(){
+		var form = document.getElementById('search_team_form');
+		form.action = "${ctx}/member.do";
+		form.method = "post";
+		if(form.teamid.value == ""){
+			alert('teamid를 공백으로 하면 안됩니다');
+			document.teamid.focus();
+		}
+		form.submit();
+	});
+</script>
 </body>
 </html>

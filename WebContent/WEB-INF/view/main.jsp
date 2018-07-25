@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-<jsp:include page="common/head.jsp"/>
+	<jsp:include page="common/head.jsp"/>
 <body>
 <div id="wrapper">
 	<div id="header">
@@ -17,13 +17,13 @@
 		<jsp:include page="common/footer_box.jsp"/>
 	</div>
 </div>
-<script>
+<!-- <script>
 	function move(domain, action, page){
 		console.log('클릭 테스트 성공 ${ctx}')
 		alert('클릭 테스트 성공 ${ctx}');
 		location.href = "${ctx}/"+domain+".do?action="+action+"&page="+page;
 	}
-</script>
+</script> -->
 <script>
 	function trans(domain, action, page){
 		return true;
