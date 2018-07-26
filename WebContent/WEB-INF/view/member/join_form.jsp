@@ -3,11 +3,13 @@
 <!-- memID, teamID, name, 800101-1, roll, password -->
 <!doctype html>
 <html lang="en">
-<head>
+	<jsp:include page="../common/head.jsp"/>
+<!-- <head>
 	<meta charset="UTF-8" />
 	<title>회원가입화면</title>
-</head>
+</head> -->
 <body>
+	<h1>회원가입</h1>
 	<form id="join_form" >
 		ID: <input type="text" name="memid"><br />
 		Name: <input type="text" name="name"><br />
@@ -25,7 +27,6 @@
 			form.method = "post";
 			if(form.memid.value == ""){
 				alert('id를 공백으로 하면 안됩니다');
-				<a location href="${ctx}/"></a>
 			}else if(form.pass.value == ""){
 				alert('pass를 공백으로 하면 안됩니다');
 				document.pass.focus();

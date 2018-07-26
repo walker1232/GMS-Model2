@@ -29,9 +29,9 @@
  		form.method = "post";
  		var memid = form.memid.value;
  		var pass = form.pass.value;
- 		mem.setMemid(memid);
- 		mem.setPassword(pass);
- 		if(mem.loginValidation()){
+ 		member.setMemid(memid);
+ 		member.setPassword(pass);
+ 		if(service.loginValidation(member)){
  			form.submit();
  		}
  		/* alert('입력한 ID'+memid); */
