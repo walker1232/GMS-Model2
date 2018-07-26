@@ -23,7 +23,7 @@
 	/* mem.setMemid('유효성 체크할 아이디는 hong 이야');
  	alert('유효성 체크값: '+mem.loginValidation()); */
  	document.getElementById('loginFormBtn').addEventListener('click', function(){
- 		
+ 		var member = new Member();
  		var form = document.getElementById('user_login_form');
  		form.action = "${ctx}/member.do";
  		form.method = "post";
