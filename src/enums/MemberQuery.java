@@ -17,8 +17,11 @@ public enum MemberQuery {
 					+"	WHERE MEM_ID LIKE '%s' AND PASSWORD LIKE '%s'	";
 			break;
 		case INSERT_MEMBER:
-			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN)	VALUES('%s', '%s', '%s', '%s')";
+			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN, TEAM_ID, AGE, ROLL, GENDER)	VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
 			break;
+		/*case INSERT_MEMBER:
+			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN)	VALUES('%s', '%s', '%s', '%s')";
+			break;*/
 		case COUNT_MEMBER:
 			query = " SELECT COUNT(*) AS count FROM MEMBER ";
 			break;

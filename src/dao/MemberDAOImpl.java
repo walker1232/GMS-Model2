@@ -29,7 +29,14 @@ public class MemberDAOImpl implements MemberDAO{
 				DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(), member.getMemID(), member.getPassword(), member.getName(), member.getSsn()));
+					.executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(), member.getMemID(), 
+																					   member.getPassword(), 
+																					   member.getName(), 
+																					   member.getSsn(),
+																					   member.getTeamID(),
+																					   member.getAge(),
+																					   member.getRoll(),
+																					   member.getGender()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

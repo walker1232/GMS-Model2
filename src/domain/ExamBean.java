@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ExamBean {
 	public String examSeq, month, score, memId, subSeq, recordSeq;
+	public static final String TEST="TEST";
 
 	
 
