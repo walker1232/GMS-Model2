@@ -1,38 +1,109 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String ctx = application.getContextPath(); %>
+<jsp:include page="../common/head.jsp"/>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" />
 	<title>비밀번호 변경</title>
+	<style>
+	table, th, td {
+    border: 1px solid black;
+}
+</style>
 </head>
 <body>
 	<h3>비밀번호 변경</h3>
-
 <form id="update_form" >
-	ID: <input type="text" name="memid"/><br />
+	<!-- ID: <input type="text" name="memid"/><br />
 	Pass: <input type="text" name="pass"><br />
 	NewPw: <input type="text" name="newpass"><br />
 	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="page" value="update_result">
-	<input id="updateFormBtn" type="submit" value="update">
+	<input id="updateFormBtn" type="submit" value="update"> -->
+	<table style="width:50%">
+	<tr>
+		<td rowspan="3"></td>
+		<td>아아디</td>
+		<td colspan="2">${user.memID}</td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td >${user.name}</td>
+	</tr>
+	<tr>
+		<td>비번</td>
+		<td ><input type="text" name="pass" placeholder="****"></td>
+		
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td>${user.age}</td>
+		<td>팀명</td>
+		<td>${user.teamID}</td>
+		<td>
+			<!-- <select name="teamid" id="tamid">
+				<option value="" selected="selected">none</option>
+				<option value="nolja">걍놀자</option>
+				<option value="jieunHouse">지은이네</option>
+				<option value="jieunHouse">터틀킹</option>
+				<option value="codingZzang">코딩짱</option>
+			</select> -->
+			<input type="radio" id="teamid_1" name="teamid" value="none" checked="checked"/>없음
+			<input type="radio" id="teamid_2" name="teamid" value="nolja"/>걍놀자
+			<input type="radio" id="teamid_3" name="teamid" value="jieunHouse"/>지은이네
+			<input type="radio" id="teamid_4" name="teamid" value="turtleKing"/>터틀킹
+			<input type="radio" id="teamid_5" name="teamid" value="codingZzang"/>코딩짱
+		</td>
+	</tr>
+	<tr>
+		<td>성별</td>
+		<td>${user.gender}</td>
+		<td>역할</td>
+		<td>${user.roll}</td>
+		<td>
+			<select name="roll" id="roll">
+				<option value="leader" selected="selected">팀장</option>
+				<option value="front">프론트개발</option>
+				<option value="back">백단개발</option>
+				<option value="android">안드로이드개발</option>
+				<option value="minfe">민폐</option>
+			</select>
+		</td>
+	</tr>
+</table>
+	<input type="hidden" name="action" value="update">
+	<input type="hidden" name="memid" value="${user.memID}">
+	<input type="button" id="updateConfirmBtn" value="수정확인"/>
 </form>
+
 <script>
-	document.getElementById('update_form').addEventListener('click', function(){
+	
+	
+    var form = document.getElementById('update_form');
+    var roll = document.getElementById("roll");
+    for(var i = 0; i < roll.options.length; i++){
+    	alert(roll.options[i].value+'과 같다!!');
+    	if(roll.options[i].value === '${user.roll}'){
+    		alert(roll.options[i].value+'과 같다!!');
+    		roll.options[i].setAttribute("selected", "selected");
+    	}
+    }
+    form.roll.setAttribute("selected","selected");
+	document.getElementById('updateConfirmBtn').addEventListener('click', function(){
+		alert('수정확인버튼 클릭함!!');
+		//var form = document.getElementById('update_form');
 		form.action = "${ctx}/member.do";
 		form.method = "post";
-		if(form.memid.value == ""){
-			alert('id를 공백으로 하면 안됩니다');
-			document.memid.focus();
-		}else if(form.pass.value == ""){
-			alert('pass를 공백으로 하면 안됩니다');
-			document.pass.focus();
-		}else if(form.newpass.value == ""){
-			alert('newpass를 공백으로 하면 안됩니다');
-			document.newpass.focus();
-		}
 		form.submit();
 	});
+	
+	 for(var i=1; i<=5; i++){
+	        if(document.getElementById('teamid_'+i).value==='${user.teamID}'){
+	        document.getElementById('teamid_'+i).checked = true;
+	        } 
+	    }
+    
 </script>
 </body>
 </html>

@@ -21,7 +21,9 @@ public class UpdateCommand extends Command{
 			System.out.println("------------------회원 수정에 들오옴------------------");
 			MemberBean mem = new MemberBean();
 			mem.setMemID(request.getParameter("memid"));
-			mem.setPassword(request.getParameter("pass")+"/"+request.getParameter("newpass"));
+			mem.setPassword(request.getParameter("pass"));
+			mem.setTeamID(request.getParameter("teamid"));
+			mem.setRoll(request.getParameter("roll"));
 			MemberServiceImpl.getinstance().updateMember(mem);
 			System.out.println("회원정보 수정 성공");
 			break;

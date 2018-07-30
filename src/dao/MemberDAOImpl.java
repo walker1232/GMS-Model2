@@ -116,6 +116,7 @@ public class MemberDAOImpl implements MemberDAO{
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setTeamID(rs.getString("TEAMID"));
+				mem.setGender(rs.getString("GENDER"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -153,9 +154,10 @@ public class MemberDAOImpl implements MemberDAO{
 			.getConnection()
 			.createStatement()
 			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString()
-					, member.getPassword().split("/")[1]
-					, member.getMemID()
-					, member.getPassword().split("/")[0]));
+					, member.getPassword()
+					, member.getTeamID()
+					, member.getRoll()
+					, member.getMemID()));
 			System.out.println("완료");
 		} catch (Exception e) {
 			e.printStackTrace();

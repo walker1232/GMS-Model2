@@ -1,6 +1,7 @@
+"use strict";
 var router = (()=>{ 
     			return {move : x=>{
-        			location.href = x[0]+'/'+x[1]+'.do?action='+x[2]+'&page='+x[3]}}; // key값과 value Json String : Json Value 
+        			location.href = x.ctx + '/' + x.domain + '.do?action=' + x.action + '&page=' + x.page}}; // key값과 value Json String : Json Value 
     	})();
 /*var service = (()=>{
 	return {

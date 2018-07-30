@@ -26,9 +26,8 @@ public enum MemberQuery {
 			query = " SELECT COUNT(*) AS count FROM MEMBER ";
 			break;
 		case UPDATE_MEMBER:
-			query = " UPDATE MEMBER SET PASSWORD = '%s' " + 
-					"	WHERE MEM_ID LIKE '%s'	" +
-					"	AND PASSWORD LIKE '%s'	";
+			query = " UPDATE MEMBER SET PASSWORD = '%s', TEAM_ID = '%s', ROLL = '%s' " + 
+					"	WHERE MEM_ID LIKE '%s' ";
 			break;
 		case DELETE_MEMBER:
 			query = " DELETE FROM MEMBER WHERE MEM_ID LIKE '%s' and PASSWORD LIKE '%s' ";
@@ -49,7 +48,7 @@ public enum MemberQuery {
 					" WHERE TEAM_ID LIKE '%s' ";
 			break;
 		case SELECT_ID:
-			query = " SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN " +
+			query = " SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " +
 					" FROM MEMBER " +
 					" WHERE MEM_ID LIKE '%s' ";
 		}

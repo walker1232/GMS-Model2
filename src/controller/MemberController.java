@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import command.Carrier;
 
@@ -59,7 +60,10 @@ public class MemberController extends HttpServlet {
 			System.out.println(num);
 			break;
 		case UPDATE:
-			Carrier.redirect(request, response, "");
+			Sentry.cmd.setPage("user_login_form");
+			Sentry.cmd.execute();
+			Carrier.forward(request, response);
+			//Carrier.redirect(request, response, "");
 			break;
 		case DELETE:
 			Carrier.redirect(request, response, "");
@@ -67,6 +71,7 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			System.out.println("=============js login===============");
 			if(request.getAttribute("match").equals("TRUE")){
+				request.getSession().setAttribute("user", request.getAttribute("user"));	// 세션은 톰캣이 관리하는 것이기에 여기에서 세션을 걸어줘야 한다
 				Carrier.forward(request, response);
 			}else {
 				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");

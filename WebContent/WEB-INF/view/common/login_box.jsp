@@ -9,11 +9,17 @@
 
 	document.getElementById('moveLoginForm').addEventListener('click', function(){
 		alert('로그인 이벤트 체크 !!');
-		router.move(['${ctx}', 'member', 'move', 'user_login_form']); // var x = ['${ctx}', 'member', 'move', 'user_login_form']; 이걸 한번에 쓴 것
+		router.move({ctx : '${ctx}', 
+					 domain : 'member', 
+					 action : 'move', 
+					 page : 'user_login_form'}); // var x = ['${ctx}', 'member', 'move', 'user_login_form']; 이걸 한번에 쓴 것
 	});
 	document.getElementById('moveJoinForm').addEventListener('click', function(){
 		alert('조인 이벤트 체크!!');
-		router.move(['${ctx}', 'member', 'move', 'join_form']);
+		router.move({ctx : '${ctx}', 
+					 domain : 'member', 
+					 action : 'move', 
+					 page : 'join_form'});
 	});
 	
 

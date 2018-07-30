@@ -16,7 +16,7 @@
 		비밀번호: <input type="text" name= "pass">
 		<input id="loginFormBtn" type="button" value="Login">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="page" value="mypage2">
+		<!-- <input type="hidden" name="page" value="mypage2"> -->
 	</form>
 	</div>
 	<script>

@@ -11,7 +11,7 @@ public class LoginCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		setPage("mypage2");
 		System.out.println("페이지는"+request.getParameter("page"));
 		execute();
 	}
