@@ -18,7 +18,7 @@ import command.Sentry;
 import enums.Action;
 import service.MemberServiceImpl;
 
-@WebServlet({"/member.do","/admin.do"})	//URL Mapping
+@WebServlet({"/member.do"/*,"/admin.do"*/})	//URL Mapping
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -71,7 +71,7 @@ public class MemberController extends HttpServlet {
 		case LOGIN:
 			System.out.println("=============js login===============");
 			if(request.getAttribute("match").equals("TRUE")){
-				request.getSession().setAttribute("user", request.getAttribute("user"));	// 세션은 톰캣이 관리하는 것이기에 여기에서 세션을 걸어줘야 한다
+				//request.getSession().setAttribute("user", request.getAttribute("user"));	// 세션은 톰캣이 관리하는 것이기에 여기에서 세션을 걸어줘야 한다
 				Carrier.forward(request, response);
 			}else {
 				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");

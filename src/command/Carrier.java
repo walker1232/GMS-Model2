@@ -18,7 +18,9 @@ public class Carrier {
 	}
 	public static void redirect(HttpServletRequest request,HttpServletResponse response, String url) {
 		try {
+			System.out.println("리다이렉트 들어옴");
 			response.sendRedirect(request.getContextPath()+url);
+			System.out.println("dddddd"+request.getContextPath()+url);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

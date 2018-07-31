@@ -4,10 +4,7 @@
 		<ul id="menu">
 			<li><a onclick="move('member', 'move', 'member_list')">회원목록</a></li>
 			<li><a id="moveSearchIdForm">회원검색</a></li>
-<!-- 		<li><a onclick="move('member', 'move', 'search_id_form')">회원검색</a></li> -->
-			<!-- <li><a id="moveMain">HOME</a></li> -->
 			<li><a href="${ctx }">HOME</a></li>
-			<!-- <li><a href="">ADMIN</a></li> -->
 		</ul>
 </div>
 <script>

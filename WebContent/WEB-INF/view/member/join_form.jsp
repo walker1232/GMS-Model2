@@ -15,10 +15,10 @@
 		Name: <input type="text" name="name"><br />
 		Pass: <input type="text" name="pass"><br />
 		Ssn : <input type="text" name="ssn"><br />
-		<input type="hidden" name="action" value="join">
+		<!-- <input type="hidden" name="action" value="join">
 		<input type="hidden" name="page" value="join_result">
 		<input type="hidden" name="gender">
-		<input type="hidden" name="age">
+		<input type="hidden" name="age"> -->
 		<input id="JoinFormBtn" type=button value="Join">
 		소속팀
 		<input type="radio" name="teamid" value="none" checked="checked" />없음
@@ -52,6 +52,32 @@
 				var form = document.getElementById('join_form');
 				form.action = "${ctx}/member.do";
 				form.method = "post";
+				/* var json = {'key', 'value'};
+				var val = json.k; */
+				// json은 객체를 담을 수 있다
+				/* var json = {
+						name : ['action', 'gender', 'age'],
+						value : ['join', '', '']
+				};
+				for(var i = 0; i < json.name.length; i++){
+					var node = document.createElement('input');
+					node.setAttribute('type', 'hidden');
+					node.setAttribute('name', json.name[i]);
+					node.setAttribute('value', json.value[i]);
+					form.appendChild(node);
+				}; */
+				var arr = [{name:'action', value:'join'}, 
+						   {name:'gender'}, 
+						   {name:'age'}
+						   ];
+				for(var i in arr){
+					var node = document.createElement('input');
+					node.setAttribute('type', 'hidden');
+					node.setAttribute('name', arr[i].name);
+					node.setAttribute('value', arr[i].value);
+					form.appendChild(node);
+				};
+				
 				member.join(form.ssn.value);
 				form.gender.value = member.getGender();
 				form.age.value = member.getAge();
@@ -59,7 +85,7 @@
 				form.submit();
 			}else{
 				alert(x.text);
-			}	
+			}
 		});
 	</script>
 </body>

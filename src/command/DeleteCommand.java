@@ -11,7 +11,7 @@ public class DeleteCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		setPage(request.getParameter("page"));
+		//setPage(request.getParameter("page"));
 		execute();
 	}
 	@Override
@@ -20,9 +20,10 @@ public class DeleteCommand extends Command{
 		case MEMBER:
 			System.out.println("-------------------회원탈퇴 들어옴----------------------");
 			MemberBean mem = new MemberBean();
-			mem.setMemID(request.getParameter("memid"));
+			mem.setMemID(((MemberBean)request.getSession().getAttribute("user")).getMemID());
 			mem.setPassword(request.getParameter("pass"));
 			MemberServiceImpl.getinstance().deleteMember(mem);
+			request.getSession().invalidate();
 			System.out.println("-----------------회원탈퇴 성공--------------------------");
 			break;
 		default:

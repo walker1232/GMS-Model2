@@ -40,7 +40,7 @@ public class LoginCommand extends Command{
 		mem.setPassword(request.getParameter("pass"));
 		if(MemberServiceImpl.getinstance().login(mem)) {
 			request.setAttribute("match", "TRUE");
-			request.setAttribute("user", MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			request.getSession().setAttribute("user", MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
 		}else {
 			request.setAttribute("match", "FALSE");
 		}

@@ -42,13 +42,6 @@
 		<td>팀명</td>
 		<td>${user.teamID}</td>
 		<td>
-			<!-- <select name="teamid" id="tamid">
-				<option value="" selected="selected">none</option>
-				<option value="nolja">걍놀자</option>
-				<option value="jieunHouse">지은이네</option>
-				<option value="jieunHouse">터틀킹</option>
-				<option value="codingZzang">코딩짱</option>
-			</select> -->
 			<input type="radio" id="teamid_1" name="teamid" value="none" checked="checked"/>없음
 			<input type="radio" id="teamid_2" name="teamid" value="nolja"/>걍놀자
 			<input type="radio" id="teamid_3" name="teamid" value="jieunHouse"/>지은이네
@@ -72,8 +65,8 @@
 		</td>
 	</tr>
 </table>
-	<input type="hidden" name="action" value="update">
-	<input type="hidden" name="memid" value="${user.memID}">
+	<!-- <input type="hidden" name="action" value="update"> -->
+	<%-- <input type="hidden" name="memid" value="${user.memID}"> --%>
 	<input type="button" id="updateConfirmBtn" value="수정확인"/>
 </form>
 
@@ -83,9 +76,7 @@
     var form = document.getElementById('update_form');
     var roll = document.getElementById("roll");
     for(var i = 0; i < roll.options.length; i++){
-    	alert(roll.options[i].value+'과 같다!!');
     	if(roll.options[i].value === '${user.roll}'){
-    		alert(roll.options[i].value+'과 같다!!');
     		roll.options[i].setAttribute("selected", "selected");
     	}
     }
@@ -95,6 +86,9 @@
 		//var form = document.getElementById('update_form');
 		form.action = "${ctx}/member.do";
 		form.method = "post";
+		var node = document.createElement('input');
+		node.innerHTML = '<input type="hidden" name="action" value="update" />';
+		form.appendChild(node);
 		form.submit();
 	});
 	

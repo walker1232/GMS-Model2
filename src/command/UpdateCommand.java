@@ -20,7 +20,7 @@ public class UpdateCommand extends Command{
 		case MEMBER:
 			System.out.println("------------------회원 수정에 들오옴------------------");
 			MemberBean mem = new MemberBean();
-			mem.setMemID(request.getParameter("memid"));
+			mem.setMemID(((MemberBean)request.getSession().getAttribute("user")).getMemID());
 			mem.setPassword(request.getParameter("pass"));
 			mem.setTeamID(request.getParameter("teamid"));
 			mem.setRoll(request.getParameter("roll"));

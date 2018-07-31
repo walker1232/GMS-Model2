@@ -8,37 +8,44 @@
 	<title>삭제</title>
 </head>
 <body>
-	<h3>삭제</h3>
-<form id="delete_form">
-	<input type="hidden" name="memid" value="${user.memID}">
-	<input type="hidden" name="pass" value="${user.password}">
-	<!-- ID: <input type="text" name="memid"><br />
-	Pass: <input type="text" name="pass"><br /> -->
-	<input type="hidden" name="action" value="delete"><br />
-	<!-- <input type="hidden" name="page" value="delete_result"><br /> -->
-	<input id="deleteFormBtn" type="submit" value="delete">
-</form>
-<script>
-	/* documemnt.getElementById('deleteFormBtn').addEventListener('click', function(){
+<div id="wrapper">
+	<div id="header">
+		<jsp:include page="../common/title_box.jsp"/>
+		<jsp:include page="../common/login_box.jsp"/>
+		<jsp:include page="../common/menu_box.jsp"/>
+	</div> <!-- header end -->
+	<div id="content">
+		<form id="delete_form">
+			<!-- ID: <input type="text" name="memid"><br /> -->
+			<font color="black">비밀번호 재입력: </font><input type="text" name="pass">
+			<!-- <input type="hidden" name="action" value="delete"> -->
+			<!-- <input type="hidden" name="page" value="delete_result"><br /> -->
+			<input id="deleteFormBtn" type="button" value="delete">
+		</form>
+		
+	</div> <!-- content end -->
+	<div id ="footer">
+		<jsp:include page="../common/footer_box.jsp"/>
+	</div>
+</div>
+	<script>
 		var form = document.getElementById('delete_form');
-		form.action = "${ctx}/member.do"
-		form.method = "post";
-		if(form.memid.value == ""){
-			alert('id를 공백으로 하면 안됩니다');
-			document.memid.focus();
-		}else if(form.pass.value == ""){
-			alert('pass를 공백으로 하면 안됩니다');
-			document.pass.focus();
-		}
-		form.submit();
-	}); */
-	document.getElementById('deleteFormBtn').addEventListener('click', function(){
-		alert('탈퇴확인 버튼 클릭함!!');
-		var from = document.getElementById('delete_form');
-		form.action = "${ctx}/member.do";
-		form.method = "post";
-		form.submit();
-	});
-</script>
+		document.getElementById('deleteFormBtn').addEventListener('click', function(){
+			alert('탈퇴확인 버튼 클릭함!!');
+			var val = form.pass.value;
+			if(val === '${user.password}'){
+				form.action = "${ctx}/member.do";
+				form.method = "post";
+				var node = document.createElement('input');
+				node.innerHTML = '<input type="hidden" name="action" value="delete" />';
+				form.appendChild(node);
+				form.submit();
+			}else{
+			alert('비밀번호가 다릅니다!!');
+			}
+		});
+		
+		
+	</script>
 </body>
 </html>

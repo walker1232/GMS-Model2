@@ -9,9 +9,11 @@
 <h1>나이: ${user.age}</h1>
 <h1>역할: ${user.roll}</h1>
 <h1>성별: ${user.gender}</h1> --%>
+<div>
+	<a id="myPage2MoveToUpdate">UPDATE FORM 이동</a>
+	<a id="myPage2MoveToDelete">DELETE FORM 이동</a>
+</div>
 
-<h3><a id="myPage2MoveToUpdate">UPDATE FORM 이동</a></h3>
-<h3><a id="myPage2MoveToDelete">DELETE FORM 이동</a></h3>
 <script>
 	document.getElementById('myPage2MoveToUpdate').addEventListener('click', function(){
 		router.move({ctx : '${ctx}',

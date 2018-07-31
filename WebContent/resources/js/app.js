@@ -63,21 +63,13 @@ var member = (()=>{
     var setPassword = (pass)=> {this._password = pass;}
     var setAge = x=>{
     	var date = new Date().getFullYear();
-    	alert(x);
-    	alert(x.substring(0,2));
     	this._age = date - 1900 + 1 - x.substring(0,2);
-    	alert(this._age);
-    	/*this._age = date - 1900 + 1 - x.getSsn.substring(0,3);*/
     	}
     var setGender = x=>{
     	if(x.substring(7,8) === '1'){
-    		alert(x.substring(7,8));
     		this._gender = 'man';
-    		alert(this._gender);
     	}else{
-    		alert(x.substring(7,8));
     		this._gender = 'woman';
-    		alert(this._gender);
     	}
     	}
     var getName = ()=> {return this._name;}
