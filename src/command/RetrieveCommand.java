@@ -2,7 +2,6 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
-import enums.Domain;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command{
@@ -16,15 +15,9 @@ public class RetrieveCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(domain.toUpperCase())) {
-		case MEMBER:
 		System.out.println("----회원찿기 들어옴----");
-		MemberServiceImpl.getinstance().searchById("memid");
+		request.setAttribute("retrieve", MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
 		System.out.println("----회원찿기 성공----");
-		break;
-		default:
-			break;
-		}
 		super.execute();
 	}
 }

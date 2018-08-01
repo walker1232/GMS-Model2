@@ -7,11 +7,11 @@
 <div id="wrapper">
 	<div id="header">
 		<jsp:include page="../common/title_box.jsp"/>
+		<h1>관리자 페이지</h1>
 		<jsp:include page="menu_box.jsp"/>
 	</div> <!-- header end -->
 	<div id="content">
 		<jsp:include page="content_box.jsp"/>
-		<%-- <img src="${ctx }/img/home/koala.jpg" alt="100" /> --%>
 	</div> <!-- content end -->
 	<div id ="footer">
 		<jsp:include page="../common/footer_box.jsp"/>

@@ -60,6 +60,7 @@ public class MemberDAOImpl implements MemberDAO{
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setTeamID(rs.getString("TEAMID"));
+				mem.setGender(rs.getString("GENDER"));
 				memList.add(mem);
 			}
 		} catch (Exception e) {
@@ -89,6 +90,7 @@ public class MemberDAOImpl implements MemberDAO{
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setTeamID(rs.getString("TEAMID"));
+				mem.setGender(rs.getString("GENDER"));
 				memList.add(mem);
 			}
 		} catch (Exception e) {

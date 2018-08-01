@@ -1,7 +1,7 @@
 package enums;
 
 public enum Domain {
-	MEMBER, EXAM, PROJECTTEAM, RECORD, SUBJECT, CTX, WEBPATH, MAIN;
+	MEMBER, EXAM, PROJECTTEAM, RECORD, SUBJECT, CTX, WEBPATH, MAIN, ADMIN;
 	@Override
 	public String toString() {
 		String res = "";

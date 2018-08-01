@@ -13,14 +13,14 @@
 </style>
 </head>
 <body>
-	<h3>비밀번호 변경</h3>
-<form id="update_form" >
-	<!-- ID: <input type="text" name="memid"/><br />
-	Pass: <input type="text" name="pass"><br />
-	NewPw: <input type="text" name="newpass"><br />
-	<input type="hidden" name="action" value="update">
-	<input type="hidden" name="page" value="update_result">
-	<input id="updateFormBtn" type="submit" value="update"> -->
+<div id="wrapper">
+	<div id="header">
+		<jsp:include page="../common/title_box.jsp"/>
+		<jsp:include page="../common/login_box.jsp"/>
+		<jsp:include page="../common/menu_box.jsp"/>
+	</div> <!-- header end -->
+	<div id="content">
+	<form id="update_form" >
 	<table style="width:50%">
 	<tr>
 		<td rowspan="3"></td>
@@ -34,7 +34,6 @@
 	<tr>
 		<td>비번</td>
 		<td ><input type="text" name="pass" placeholder="****"></td>
-		
 	</tr>
 	<tr>
 		<td>나이</td>
@@ -65,14 +64,17 @@
 		</td>
 	</tr>
 </table>
-	<!-- <input type="hidden" name="action" value="update"> -->
-	<%-- <input type="hidden" name="memid" value="${user.memID}"> --%>
 	<input type="button" id="updateConfirmBtn" value="수정확인"/>
 </form>
+	</div> <!-- content end -->
+	<div id ="footer">
+		<jsp:include page="../common/footer_box.jsp"/>
+	</div>
+</div>
+	<h3>비밀번호 변경</h3>
+
 
 <script>
-	
-	
     var form = document.getElementById('update_form');
     var roll = document.getElementById("roll");
     for(var i = 0; i < roll.options.length; i++){
@@ -97,7 +99,6 @@
 	        document.getElementById('teamid_'+i).checked = true;
 	        } 
 	    }
-    
 </script>
 </body>
 </html>

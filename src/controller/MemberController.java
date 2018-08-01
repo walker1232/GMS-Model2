@@ -41,14 +41,11 @@ public class MemberController extends HttpServlet {
 			Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 			break;
 		case LIST:
-		
 			Carrier.redirect(request, response, "");
-			
 			break;
 		case SEARCH:
 			System.out.println(MemberServiceImpl.getinstance().searchByName(request.getParameter("teamid")));
 			Carrier.redirect(request, response, "");
-			
 			break;
 		case RETRIEVE:
 			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));

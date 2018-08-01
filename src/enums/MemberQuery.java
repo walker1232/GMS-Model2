@@ -39,7 +39,8 @@ public enum MemberQuery {
 					+"	AGE,	" 
 					+"	ROLL,	"
 					+"  SSN,	"
-					+"	PASSWORD 	PASS"
+					+"	PASSWORD 	PASS,	"
+					+"  GENDER	"
 					+"	FROM MEMBER ";
 			break;
 		case SELECT_NAME:

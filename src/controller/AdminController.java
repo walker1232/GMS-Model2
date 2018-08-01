@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import command.Carrier;
 
@@ -33,6 +32,15 @@ public class AdminController extends HttpServlet {
 				System.out.println("MOVE");
 				System.out.println(Action.valueOf(Sentry.cmd.getAction().toUpperCase()));
 				Carrier.forward(request, response);
+			break;
+		case LIST:
+			System.out.println("#######admin List########");
+			Carrier.forward(request, response);
+			break;
+		case RETRIEVE:
+			System.out.println("#####admin Retrieve#######");
+			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			Carrier.forward(request, response);
 			break;
 		default:
 			break;

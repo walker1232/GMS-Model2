@@ -22,7 +22,7 @@ public class ListCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		switch(Domain.valueOf(domain.toUpperCase())) {
+		/*switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
 		System.out.println("회원목록 들어옴");
 		List<MemberBean> memList = new ArrayList<>();
@@ -30,11 +30,24 @@ public class ListCommand extends Command{
 		for(MemberBean m : memList) {
 			System.out.println(m);
 		}
+		//request.setAttribute("list", memList);
+		request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
 		System.out.println("회원목록 출력 성공");
 		break;
+		case ADMIN:
+			System.out.println("어드민에서 회원목록 들어옴");
+			List<MemberBean> adminList = new ArrayList<>();
+			adminList = MemberServiceImpl.getinstance().listMember();
+			for(MemberBean m : adminList) {
+				System.out.println(m);
+			}
+			request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
+			System.out.println("어드민에서 회원목록 출력 성공");
+			break;
 		default:
 			break;
-		}
+		}*/
+		request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
 		super.execute();
 	}
 }

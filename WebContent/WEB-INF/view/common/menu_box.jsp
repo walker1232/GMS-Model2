@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+	<jsp:include page="head.jsp"/>
 <div id="menu-box">
 			<ul id="menu">
 				<li><a href="">HOME</a></li>
@@ -10,7 +10,12 @@
 			</ul>
 </div>
 <script>
-	document.getElementById('moveAdmin').addEventListener('click', function(){
+	/* document.getElementById('moveAdmin').addEventListener('click', function(){
 		router.move(['${ctx}', 'admin', 'move', 'main']);
+	}); */
+	document.getElementById('moveAdmin').addEventListener('click', function(){	//콜백함수	별개로 querySelector("#") # 반드시 써주어야 한다
+		alert('Admin 이벤트 체크 !!');
+		admin.check("${ctx}")
 	});
+	
 </script>

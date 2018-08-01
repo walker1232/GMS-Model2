@@ -1,0 +1,1 @@
+select * from member where mem_id like 'test00';

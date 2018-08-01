@@ -55,6 +55,29 @@ var service = (()=>{
 	};
 })(); 확장 */
     	// anonymous function
+/* json은 object value로 속성과 기능이 모두 올 수 있다 */
+/*var admin = (()=>{return{};})();*/
+var admin = (()=>{
+	return{
+		check : x=>{
+			var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
+			if(isAdmin){
+				var password = prompt('관리자비번을 입력 바랍니다');
+				if(password == 1){
+					router.move({
+						 ctx : x,
+						 domain : 'admin',
+						 action : 'list',
+						 page : 'main'
+					});
+				}else{
+					alert('비밀번호가 틀렸습니다');
+				}
+			}else{
+				alert('관리자만 접근이 허용됩니다');
+			}
+		}
+	};})();
 var member = (()=>{
     var _memID, _name, _ssn, _password, _age, _roll, _teamID, _gender;
     var setName = (name)=> {this._name = name;}
