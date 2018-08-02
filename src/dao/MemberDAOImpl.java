@@ -75,11 +75,17 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public List<MemberBean> selectMemberByName(String name) {
 		List<MemberBean> memList = new ArrayList<>();
+		/*String sql = 
+				" SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " + 
+				" FROM MEMBER " + 
+				" WHERE  %s  LIKE '%%%s%%' "; */
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_NAME.toString(), name));
+					//.executeQuery(String.format(sql, name.split("/")[0], name.split("/")[1]));
+					.executeQuery(String.format(MemberQuery.SELECT_NAME.toString(), name.split("/")[0], name.split("/")[1]));
+			System.out.println(name.split("/")[0] + name.split("/")[1]);
 			MemberBean mem = null;
 			while(rs.next()) {
 				mem = new MemberBean();

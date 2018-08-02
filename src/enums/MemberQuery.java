@@ -44,9 +44,9 @@ public enum MemberQuery {
 					+"	FROM MEMBER ";
 			break;
 		case SELECT_NAME:
-			query = " SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN " + 
+			query = " SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " + 
 					" FROM MEMBER " + 
-					" WHERE TEAM_ID LIKE '%s' ";
+					" WHERE  %s  LIKE '%%%s%%' "; 
 			break;
 		case SELECT_ID:
 			query = " SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " +

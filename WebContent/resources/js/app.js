@@ -27,22 +27,29 @@ var router = (()=>{
 		}
 	};
 })();*/
+
 var service = (()=>{
-	return {
-		nullChecker : x=>{
-			var i = 0;
-			var j = {
-					checker : true,
-					text : '필수입력값이 없습니다'
-			};
-			for(i in x){
-				if(x[i] === ''){
-					j.checker = false;
-				}
-				return j;
-			}
-		}
-	};
+    return {
+        nullChecker : x=>{
+            var i = 0;
+            var j = {
+                    checker : true,
+                    text : '필수입력값이 없습니다'
+            };
+            for(i in x){
+                if(x[i] === ''){
+                    j.checker = false;
+                }
+            }
+            return j;
+            },
+                addClass : (dom,cName)=>{
+                    var arr = cName.split(" ");
+                    if(arr.indexOf(cName) == -1){
+                        dom.className += " " + cName;
+            }
+        }
+    }
 })();
 /*var service = (()=>{
 	return {
@@ -75,6 +82,52 @@ var admin = (()=>{
 				}
 			}else{
 				alert('관리자만 접근이 허용됩니다');
+			}
+		},
+		main : x=>{
+		service.addClass(
+			document.getElementById('searchBox'),
+			'width80pt center'
+		);
+		service.addClass(
+			document.getElementById('searchWord'),
+			'width100px floatRight'
+		);
+		service.addClass(
+			document.getElementById('searchOption'),
+			'floatRight '
+		);
+		service.addClass(
+			document.getElementById('searchBtn'),
+			'floatRight '
+		);
+		service.addClass(
+			document.getElementById('contentBoxTab'),
+			'width90pt center marginTop30px'
+		);
+		service.addClass(
+			document.getElementById('contentBoxMeta'),
+			'bgColorYellow '
+		);
+		
+		
+			
+		/* document.getElementById('searchBtn').addEventListener('',function(){}); 콜백 함수 기본형*/
+			document.getElementById('searchBtn').addEventListener('click',function(){
+			 location.href = (document.getElementById('searchOption').value === 'memid') ?
+					 x+'/admin.do?action=retrieve&page=memberDetail&memid='+document.getElementById('searchWord').value
+					: 
+						location.href = x+'/admin.do?action=search&page=main&searchOption='+document.getElementById('searchOption').value+'&searchWord='+document.getElementById('searchWord').value
+								;
+						
+		});
+			
+			for(var i of document.querySelectorAll('.username')){
+				service.addClass(i, 'cursor fontColorBlue');
+				i.addEventListener('click', function(){
+					location.href=x+'/admin.do?action=retrieve&'+'page=memberDetail&memid='+this.getAttribute('id');
+					//여기서의 this는 x[i]를 호출하는 녀석 
+				});
 			}
 		}
 	};})();

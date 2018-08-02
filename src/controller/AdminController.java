@@ -34,12 +34,17 @@ public class AdminController extends HttpServlet {
 				Carrier.forward(request, response);
 			break;
 		case LIST:
-			System.out.println("#######admin List########");
+			//System.out.println("#######admin List########");
 			Carrier.forward(request, response);
 			break;
 		case RETRIEVE:
 			System.out.println("#####admin Retrieve#######");
 			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			Carrier.forward(request, response);
+			break;
+		case SEARCH:
+			System.out.println("########admin Search########");
+			//System.out.println(MemberServiceImpl.getinstance().searchByName(request.getParameter("teamid")));
 			Carrier.forward(request, response);
 			break;
 		default:
