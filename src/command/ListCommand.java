@@ -48,6 +48,7 @@ public class ListCommand extends Command{
 			break;
 		}*/
 		request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
+		request.setAttribute("count", MemberServiceImpl.getinstance().countMember());
 		super.execute();
 	}
 }

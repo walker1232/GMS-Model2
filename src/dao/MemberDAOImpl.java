@@ -1,16 +1,18 @@
 package dao;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import domain.MemberBean;
+import enums.Domain;
 import enums.MemberQuery;
 import enums.Vendor;
-import factory.Database;
 import factory.DatabaseFactory;
 import pool.DBConstant;
+import template.PstmtQuery;
+import template.QueryTemplate;
 /*<!-- "oracle.jdbc.driver.OracleDriver" -->
 <!-- "jdbc:oracle:thin:@localhost:1521:xe" -->
 <!-- "kkk" -->
@@ -74,12 +76,12 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public List<MemberBean> selectMemberByName(String name) {
-		List<MemberBean> memList = new ArrayList<>();
+		/*List<MemberBean> memList = new ArrayList<>();*/
 		/*String sql = 
 				" SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " + 
 				" FROM MEMBER " + 
 				" WHERE  %s  LIKE '%%%s%%' "; */
-		try {
+		/*try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
@@ -103,8 +105,18 @@ public class MemberDAOImpl implements MemberDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return memList;
+		return memList;*/
+		QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("column", name.split("/")[0]);
+		map.put("value", name.split("/")[1]);
+		map.put("table", Domain.MEMBER);
+		q.play(map);
+		for(Object s: q.getList()) {
+			list.add((MemberBean)s);
+		}
+		return list;
 	}
 
 	@Override

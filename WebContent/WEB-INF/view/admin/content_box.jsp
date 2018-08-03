@@ -30,6 +30,14 @@
 			<td>${member.teamID}</td>
 		</tr>
 		</c:forEach>
+		<tr>
+			<td colsapn="6">
+				전체회원수 : ${count} 명
+				<c:forEach  begin="1" end="${count % 5 > 0 ? count/5+1 : count/5}" step="1" var = "i">
+					<span>${i}</span>
+				</c:forEach>
+			</td>
+		</tr>
 	</table>
 	<!-- <h1>This is adminpage</h1> -->
 </div>
