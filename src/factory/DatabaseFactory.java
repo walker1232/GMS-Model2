@@ -33,7 +33,7 @@ public class DatabaseFactory {
 	public static Database createDatabase2 (Map<String,Object> map) {
 		Database db = null;
 		String driver = "", url = "";
-		switch((Vendor)map.get("Vendor")) {
+		switch((Vendor)map.get("vendor")) {
 		case ORACLE:
 			driver = DBConstant.ORACLE_DRIVER;
 			url = DBConstant.CONNECTION_URL;

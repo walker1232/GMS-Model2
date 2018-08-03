@@ -8,7 +8,7 @@
 			<option value="none">검색조건</option>
 			<option value="memid">아이디</option>
 			<option value="name">이 름</option>
-			<option value="team_id">팀 명</option>
+			<option value="teamid">팀 명</option>
 		</select>
 	</div>
 	<table id="contentBoxTab">

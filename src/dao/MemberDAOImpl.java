@@ -58,7 +58,7 @@ public class MemberDAOImpl implements MemberDAO{
 				mem.setAge(rs.getString("AGE"));
 				mem.setMemID(rs.getString("MEMID"));
 				mem.setName(rs.getString("NAME"));
-				mem.setPassword(rs.getString("PASS"));
+				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setTeamID(rs.getString("TEAMID"));
@@ -76,42 +76,13 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public List<MemberBean> selectMemberByName(String name) {
-		/*List<MemberBean> memList = new ArrayList<>();*/
-		/*String sql = 
-				" SELECT MEM_ID MEMID, TEAM_ID TEAMID, AGE, ROLL, NAME, PASSWORD PASS, SSN, GENDER " + 
-				" FROM MEMBER " + 
-				" WHERE  %s  LIKE '%%%s%%' "; */
-		/*try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					//.executeQuery(String.format(sql, name.split("/")[0], name.split("/")[1]));
-					.executeQuery(String.format(MemberQuery.SELECT_NAME.toString(), name.split("/")[0], name.split("/")[1]));
-			System.out.println(name.split("/")[0] + name.split("/")[1]);
-			MemberBean mem = null;
-			while(rs.next()) {
-				mem = new MemberBean();
-				mem.setAge(rs.getString("AGE"));
-				mem.setMemID(rs.getString("MEMID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setPassword(rs.getString("PASS"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setSsn(rs.getString("SSN"));
-				mem.setTeamID(rs.getString("TEAMID"));
-				mem.setGender(rs.getString("GENDER"));
-				memList.add(mem);
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return memList;*/
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("column", name.split("/")[0]);
 		map.put("value", name.split("/")[1]);
 		map.put("table", Domain.MEMBER);
+		System.out.println("이름 :"+name);
 		q.play(map);
 		for(Object s: q.getList()) {
 			list.add((MemberBean)s);
@@ -132,7 +103,7 @@ public class MemberDAOImpl implements MemberDAO{
 				mem.setAge(rs.getString("AGE"));
 				mem.setMemID(rs.getString("MEMID"));
 				mem.setName(rs.getString("NAME"));
-				mem.setPassword(rs.getString("PASS"));
+				mem.setPassword(rs.getString("PASSWORD"));
 				mem.setRoll(rs.getString("ROLL"));
 				mem.setSsn(rs.getString("SSN"));
 				mem.setTeamID(rs.getString("TEAMID"));
@@ -210,7 +181,7 @@ public class MemberDAOImpl implements MemberDAO{
 					m.setName(rs.getString("NAME"));
 					m.setSsn(rs.getString("SSN"));
 					m.setRoll(rs.getString("ROLL"));
-					m.setPassword(rs.getString("PASS"));
+					m.setPassword(rs.getString("PASSWORD"));
 				};
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

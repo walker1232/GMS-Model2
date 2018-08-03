@@ -23,7 +23,7 @@ public abstract class QueryTemplate {
 		 this.pstmt = null;
 		 this.list = new ArrayList<>();
 		 this.map = map;
-		 this.map.put("Vendor", Vendor.ORACLE);	//"v" 일수도 있음 
+		 this.map.put("vendor", Vendor.ORACLE);	//"v" 일수도 있음 
 		 this.map.put("username", DBConstant.USER_NAME); //"id" 일수도 있음
 		 this.map.put("password", DBConstant.PASSWORD);	//"pass" 일수도 있음
 	    //initialize the game

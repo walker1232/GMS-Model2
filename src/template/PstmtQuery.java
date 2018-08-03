@@ -27,6 +27,7 @@ public class PstmtQuery extends QueryTemplate{
 		try {
 			pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
 			pstmt.setString(1, "%"+map.get("value").toString()+"%");
+			System.out.println("스타트플레이 메소드 :" + "%"+map.get("value").toString()+"%");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,6 +36,7 @@ public class PstmtQuery extends QueryTemplate{
 
 	@Override
 	void endPlay() {
+		System.out.println("-----endpaly");
 		try {
 			ResultSet rs = pstmt.executeQuery();
 			MemberBean mem = null;
@@ -46,10 +48,11 @@ public class PstmtQuery extends QueryTemplate{
 					mem.setAge(rs.getString("AGE"));
 					mem.setGender(rs.getString("GENDER"));
 					mem.setRoll(rs.getString("ROLL"));
-					mem.setPassword(rs.getString("PASS"));
+					mem.setPassword(rs.getString("PASSWORD"));
 					mem.setSsn(rs.getString("SSN"));
 					list.add(mem);
 				}
+				System.out.println("list"+list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
