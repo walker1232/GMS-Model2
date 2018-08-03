@@ -47,6 +47,7 @@ public class ListCommand extends Command{
 		default:
 			break;
 		}*/
+		System.out.println("list 커맨드 들어옴");
 		request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
 		request.setAttribute("count", MemberServiceImpl.getinstance().countMember());
 		super.execute();
