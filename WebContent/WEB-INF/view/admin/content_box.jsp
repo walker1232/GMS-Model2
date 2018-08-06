@@ -20,7 +20,7 @@
 			<th>역 할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach items="${list}" var="member">
+		<c:forEach items="${list2}" var="member">
 		<tr>
 			<td>${member.memID}</td>
 			<td><a class="username" id="${member.memID}">${member.name}</a></td>
@@ -31,11 +31,20 @@
 		</tr>
 		</c:forEach>
 		<tr>
-			<td colsapn="6">
+			<td colspan="6">
 				전체회원수 : ${count} 명
-				<c:forEach  begin="1" end="${count % 5 > 0 ? count/5+1 : count/5}" step="1" var = "i">
-					<span>${i}</span>
-				</c:forEach>
+				<ul class="pageBox">
+					<c:forEach  begin="${beginPage}" end="${endPage}" step="1" varStatus="i"> <!-- varStatus는 index를 내장하고 있다 -->
+						<li>
+							<a href="#">${i.index}</a>
+						</li>
+						<%-- <span>${i}</span> --%>
+					</c:forEach>
+						<c:if test="${count gt 25}">
+							<li>다음▶</li>
+						</c:if>
+						
+				</ul>
 			</td>
 		</tr>
 	</table>

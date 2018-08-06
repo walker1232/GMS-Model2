@@ -1,9 +1,11 @@
 package dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import domain.MemberBean;
 import enums.Domain;
@@ -190,5 +192,43 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return m;
 	}
+
+	@Override
+	public List<MemberBean> selectList(Map<?, ?> param) {
+		String beginRow = (String) param.get("beginRow");
+		String endRow = (String) param.get("endRow");
+		System.out.println("============시작행============");
+		System.out.println("============마지막행===========");
+		List<MemberBean> memsList = new ArrayList<>();
+		try {
+			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
+					.getConnection()
+					.createStatement()
+					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(), Integer.parseInt(beginRow), Integer.parseInt(endRow)));
+			MemberBean mems = null;
+			while(rs.next()) {
+				mems = new MemberBean();
+				mems.setAge(rs.getString("AGE"));
+				mems.setGender(rs.getString("GENDER"));
+				mems.setMemID(rs.getString("MEMID"));
+				mems.setName(rs.getString("NAME"));
+				mems.setPassword(rs.getString("PASSWORD"));
+				mems.setRoll(rs.getString("ROLL"));
+				mems.setSsn(rs.getString("SSN"));
+				mems.setTeamID(rs.getString("TEAMID"));
+				memsList.add(mems);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*QueryTemplate q = new PstmtQuery();
+		List<MemberBean> list = new ArrayList<>();
+		HashMap<String, Object> map = new HashMap<>();
+		map.put(", value)*/
+		return memsList;
+	}
+
+	
 
 }

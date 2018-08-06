@@ -2,13 +2,13 @@ package command;
 
 
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
-import enums.Domain;
 import service.MemberServiceImpl;
 
 public class ListCommand extends Command{
@@ -49,7 +49,38 @@ public class ListCommand extends Command{
 		}*/
 		System.out.println("list 커맨드 들어옴");
 		request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
-		request.setAttribute("count", MemberServiceImpl.getinstance().countMember());
+		/*request.setAttribute("count", MemberServiceImpl.getinstance().countMember());*/
+		
+		//int count = (int)request.getAttribute("count");
+		//count = count % 5 > 0 ? count/5+1 : count/5;
+		
+		int count = 25;
+		
+		int beginPage = 1;
+		int endPage = 0;
+		if(count/5 < 6) {
+			if(count%5 > 0) {
+				endPage = count/5+1;
+			}else {
+				endPage = count/5;
+			}
+		}else {
+			endPage = 5;
+		}
+		Map<String, Object> param = new HashMap<>();
+		String beginRow = "1";
+		String endRow = "5";
+		param.put("beginRow", beginRow);
+		param.put("endRow", endRow);
+		System.out.println("param:"+beginRow);
+		System.out.println("param:"+endRow);
+		List<MemberBean> mems = MemberServiceImpl.getinstance().getList(param);
+		request.setAttribute("count", count);
+		request.setAttribute("beginPage", "1");
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("list2", MemberServiceImpl.getinstance().getList(param));
+		//request.setAttribute("end", end);
+		//request.setAttribute("endPage", "count % 5 > 0 ? count/5+1 : count/5");
 		super.execute();
 	}
 }
