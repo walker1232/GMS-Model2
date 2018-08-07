@@ -23,7 +23,7 @@ public class ListCommand extends Command{
 	@Override
 	public void execute() {
 		
-		//request.setAttribute("list", MemberServiceImpl.getinstance().listMember());
+		//request.setAttribute("list", MemberServiceImpl.getinstance().listMember()); 주석
 		String pageNumber = "";
 		String pageNum = request.getParameter("pageNumber"); 
 		if(pageNum == null) {
