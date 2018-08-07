@@ -128,7 +128,13 @@ var admin = (()=>{
 					location.href=x+'/admin.do?action=retrieve&'+'page=memberDetail&memid='+this.getAttribute('id');
 					//여기서의 this는 x[i]를 호출하는 녀석 
 				});
-			}
+			};
+			for(var j of document.querySelectorAll('.pageNumber')){
+				service.addClass(j, 'cursor fontColorBlue');
+				j.addEventListener('click', function(){
+					location.href=x+'/admin.do?action=list&'+'page=main&pageNumber='+this.getAttribute('id');
+				});
+			};
 		}
 	};})();
 var member = (()=>{

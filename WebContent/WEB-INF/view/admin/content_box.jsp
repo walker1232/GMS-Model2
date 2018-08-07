@@ -11,7 +11,7 @@
 			<option value="teamid">팀 명</option>
 		</select>
 	</div>
-	<table id="contentBoxTab">
+	<table id="contentBoxTab">	<!-- 여기서 id는 attribute, ""는 value -->
 		<tr id="contentBoxMeta">
 			<th>아이디</th>
 			<th>이 름</th>
@@ -36,11 +36,10 @@
 				<ul class="pageBox">
 					<c:forEach  begin="${beginPage}" end="${endPage}" step="1" varStatus="i"> <!-- varStatus는 index를 내장하고 있다 -->
 						<li>
-							<a href="#">${i.index}</a>
+							<a class="pageNumber" id="${i.index}">${i.index}</a>
 						</li>
-						<%-- <span>${i}</span> --%>
 					</c:forEach>
-						<c:if test="${count gt 25}">
+						<c:if test="${existNext}"> <!-- eq(==), ne(!=), lt(<), le(<=), gt(>), ge(>=) -->
 							<li>다음▶</li>
 						</c:if>
 						

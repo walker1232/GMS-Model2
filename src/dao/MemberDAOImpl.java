@@ -195,16 +195,14 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public List<MemberBean> selectList(Map<?, ?> param) {
-		String beginRow = (String) param.get("beginRow");
-		String endRow = (String) param.get("endRow");
-		System.out.println("============시작행============");
-		System.out.println("============마지막행===========");
+		/*System.out.println("============시작행============");
+		System.out.println("============마지막행===========");*/
 		List<MemberBean> memsList = new ArrayList<>();
 		try {
 			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
 					.getConnection()
 					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(), Integer.parseInt(beginRow), Integer.parseInt(endRow)));
+					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(), param.get("beginRow"), param.get("endRow")));
 			MemberBean mems = null;
 			while(rs.next()) {
 				mems = new MemberBean();
@@ -225,7 +223,7 @@ public class MemberDAOImpl implements MemberDAO{
 		/*QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
-		map.put(", value)*/
+		map.put("beginRow", )*/
 		return memsList;
 	}
 
