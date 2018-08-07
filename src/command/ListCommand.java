@@ -52,7 +52,7 @@ public class ListCommand extends Command{
 		/*request.setAttribute("count", MemberServiceImpl.getinstance().countMember());*/
 		
 		//int count = (int)request.getAttribute("count");
-		//count = count % 5 > 0 ? count/5+1 : count/5;
+		//count = count % 5 > 0 ? count/5+1 : count/5;dd
 		
 		int count = 25;
 		
