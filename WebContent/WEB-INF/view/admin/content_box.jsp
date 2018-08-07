@@ -20,7 +20,7 @@
 			<th>역 할</th>
 			<th>팀 명</th>
 		</tr>
-		<c:forEach items="${list2}" var="member">
+		<c:forEach items="${list}" var="member">
 		<tr>
 			<td>${member.memID}</td>
 			<td><a class="username" id="${member.memID}">${member.name}</a></td>
@@ -33,16 +33,22 @@
 		<tr>
 			<td colspan="6">
 				전체회원수 : ${count} 명
-				<ul class="pageBox">
-					<c:forEach  begin="${beginPage}" end="${endPage}" step="1" varStatus="i"> <!-- varStatus는 index를 내장하고 있다 -->
+				<ul class="pageBox" >
+					<c:if test="${existPrev} ">
+						<li>◀PREV</li>
+					</c:if>
+					<c:forEach begin="${beginPage}" 
+						end="${endPage}" 
+						step="1" varStatus="i">
 						<li>
-							<a class="pageNumber" id="${i.index}">${i.index}</a>
+							<a id="${i.index}" class="pageNumber">
+								${i.index}
+							</a>
 						</li>
 					</c:forEach>
-						<c:if test="${existNext}"> <!-- eq(==), ne(!=), lt(<), le(<=), gt(>), ge(>=) -->
-							<li>다음▶</li>
-						</c:if>
-						
+					<c:if test="${existNext}">
+						<li>NEXT▶</li>
+					</c:if>
 				</ul>
 			</td>
 		</tr>
