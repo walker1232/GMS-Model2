@@ -39,7 +39,7 @@ public class ListCommand extends Command{
 		
 		
 		/*if(pageNum==null){
-			System.out.println("넘어온 pageNumber 가 없어요 !!!");
+			System.out.println("넘어온 pageNumber 가 없어요 !!!"); 주석
 			pageNumber = 1;
 		}else{
 			System.out.println("넘어온 pageNumber :"+pageNum);
