@@ -135,7 +135,18 @@ var admin = (()=>{
 					location.href=x+'/admin.do?action=list&'+'page=main&pageNumber='+this.getAttribute('id');
 				});
 			};
+			
+			document.getElementById('pageNumber').addEventListener('click', function() {
+                alert('click TEST');
+                location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+            });
+			
+			document.getElementById('pageNumber').addEventListener('click', function() {
+                alert('click TEST');
+                location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+            });
 		}
+		
 	};})();
 var member = (()=>{
     var _memID, _name, _ssn, _password, _age, _roll, _teamID, _gender;

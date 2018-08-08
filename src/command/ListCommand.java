@@ -9,6 +9,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
+import proxy.PageProxy;
+import proxy.Pagination;
 import service.MemberServiceImpl;
 
 public class ListCommand extends Command{
@@ -22,12 +24,21 @@ public class ListCommand extends Command{
 	}
 	@Override
 	public void execute() {
-		//request.setAttribute("list", MemberServiceImpl.getinstance().listMember()); 주석
-		int pageNumber = 0;
-		int pageSize = 5;
-		int blockSize = 5;
-		String pageNum = request.getParameter("pageNumber");
-		if(pageNum==null){
+		Map<String,Object> paramMap = new HashMap<>();
+        String pageNumber = request.getParameter("pageNumber");
+        PageProxy pxy = new PageProxy();
+        int pn = (pageNumber==null)? 1: Integer.parseInt(pageNumber);
+        pxy.carrayOut(pn);
+        Pagination page = pxy.getPagination();
+        paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
+        paramMap.put("endRow", String.valueOf(page.getEndRow()));
+        request.setAttribute("page", page);
+        request.setAttribute("list", MemberServiceImpl.getinstance().getList(paramMap));
+        super.execute();
+		
+		
+		
+		/*if(pageNum==null){
 			System.out.println("넘어온 pageNumber 가 없어요 !!!");
 			pageNumber = 1;
 		}else{
@@ -59,10 +70,7 @@ public class ListCommand extends Command{
 				beginPage+blockSize-1:pageCount;
 		int prevBlock = beginPage - blockSize;
 		int nextBlock = beginPage + blockSize;
-		System.out.println("beginPage::"+beginPage);
-		System.out.println("endPage::"+endPage);
-		System.out.println("prevBlock::"+prevBlock);
-		System.out.println("nextBlock::"+nextBlock);
+		
 		boolean existPrev = false;
 		if(prevBlock >= 0){
 			existPrev = true;
@@ -81,6 +89,6 @@ public class ListCommand extends Command{
 		request.setAttribute("endPage",endPage);
 		List<MemberBean>list = MemberServiceImpl.getinstance().getList(map);
 		request.setAttribute("list",list);
-		super.execute();
+		super.execute();*/
 	}
 }

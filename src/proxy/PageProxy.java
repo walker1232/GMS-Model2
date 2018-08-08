@@ -1,26 +1,16 @@
 package proxy;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Data;
 
-import javax.servlet.http.HttpServletRequest;
-
-import service.MemberServiceImpl;
-
+@Data
 public class PageProxy implements Proxy{
-	HttpServletRequest request;
+	private Pagination pagination;
 	@Override
-	public Map<?, ?> carryOut(Map<?, ?> param) {
-		Map<String, Object> map = new HashMap<>();
-		/*request = (HttpServletRequest) param.get("request");
-		request.setAttribute("existPrev",existPrev);
-		request.setAttribute("existNext",existNext);
-		request.setAttribute("count",rowCount);
-		request.setAttribute("beginPage",beginPage);
-		request.setAttribute("endPage",endPage);
-		request.setAttribute("page", page);*/
-		map.put("request", request);
-		return map;
+	public void carrayOut(Object o) {
+		this.pagination = new Pagination();
+		pagination.carrayOut(o);
+		
 	}
+	
 	
 }
