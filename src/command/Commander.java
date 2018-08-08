@@ -35,10 +35,6 @@ public class Commander{
 			break;
 		case LIST:
 			System.out.println("----회원목록 진입----");
-			cmd = new ListCommand(request);
-			break;
-		case SEARCH:
-			System.out.println("----팀원 목록 진입----");
 			cmd = new SearchCommand(request);
 			break;
 		case RETRIEVE:

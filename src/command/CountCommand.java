@@ -32,7 +32,7 @@ public class CountCommand extends Command{
 			break;
 		}*/
 		System.out.println("----총인원수 들어옴----");
-		System.out.println("총 인원:"+MemberServiceImpl.getinstance().countMember());
+		System.out.println("총 인원:"+MemberServiceImpl.getinstance().count());
 		System.out.println("----총인원수 성공----");
 		super.execute();
 	}

@@ -39,7 +39,7 @@ public class AdminController extends HttpServlet {
 			break;
 		case RETRIEVE:
 			System.out.println("#####admin Retrieve#######");
-			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			System.out.println(MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 			Carrier.forward(request, response);
 			break;
 		case SEARCH:

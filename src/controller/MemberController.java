@@ -43,17 +43,18 @@ public class MemberController extends HttpServlet {
 		case LIST:
 			Carrier.redirect(request, response, "");
 			break;
-		case SEARCH:
-			System.out.println(MemberServiceImpl.getinstance().searchByName(request.getParameter("teamid")));
+		/*case SEARCH:
+			System.out.println(MemberServiceImpl.getinstance().search(request.getParameter("teamid")));
+			//System.out.println(MemberServiceImpl.getinstance().search(request.getParameter("teamid")));
 			Carrier.redirect(request, response, "");
-			break;
+			break;*/
 		case RETRIEVE:
-			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			System.out.println(MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 			Carrier.redirect(request, response, "");
 			break;
 		case COUNT:
 			System.out.println("count 액션 들어옴");
-			int num = MemberServiceImpl.getinstance().countMember();
+			int num = MemberServiceImpl.getinstance().count();
 			System.out.println(num);
 			break;
 		case UPDATE:
