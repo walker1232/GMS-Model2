@@ -16,7 +16,7 @@ public class RetrieveCommand extends Command{
 	@Override
 	public void execute() {
 		System.out.println("----회원찿기 들어옴----");
-		request.setAttribute("retrieve", MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+		request.setAttribute("retrieve", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 		System.out.println("----회원찿기 성공----");
 		super.execute();
 	}

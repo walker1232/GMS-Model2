@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import command.Carrier;
 
 
-import command.Sentry;
+import command.Receiver;
 
 import enums.Action;
 import service.MemberServiceImpl;
@@ -27,42 +27,29 @@ public class MemberController extends HttpServlet {
 		System.out.println("여기는 MemberController");
 		System.out.println("contextpath----"+request.getContextPath());
 		System.out.println("servlet----"+request.getServletPath());
-		Sentry.init(request, response);
-		System.out.println("액션:"+Sentry.cmd.getAction());
-		switch(Action.valueOf(Sentry.cmd.getAction().toUpperCase())) {
-		case MOVE:
-				System.out.println("MOVE");
-				System.out.println(Action.valueOf(Sentry.cmd.getAction().toUpperCase()));
-				Carrier.forward(request, response);
-			break;
-		case JOIN:
+		Receiver.init(request, response);
+		System.out.println("액션:"+Receiver.cmd.getAction());
+		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
+		case ADD:
 			System.out.println("JOIN");
 			System.out.println("=========js를 통한 JOIN=======");
 			Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 			break;
-		case LIST:
-			Carrier.redirect(request, response, "");
-			break;
-		case SEARCH:
+		/*case SEARCH:
 			System.out.println(MemberServiceImpl.getinstance().searchByName(request.getParameter("teamid")));
 			Carrier.redirect(request, response, "");
-			break;
+			break;*/
 		case RETRIEVE:
-			System.out.println(MemberServiceImpl.getinstance().searchById(request.getParameter("memid")));
+			System.out.println(MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 			Carrier.redirect(request, response, "");
 			break;
-		case COUNT:
-			System.out.println("count 액션 들어옴");
-			int num = MemberServiceImpl.getinstance().countMember();
-			System.out.println(num);
-			break;
-		case UPDATE:
-			Sentry.cmd.setPage("user_login_form");
-			Sentry.cmd.execute();
+		case MODIFY:
+			/*Receiver.cmd.setPage("user_login_form");
+			Receiver.cmd.execute();*/
 			Carrier.forward(request, response);
 			//Carrier.redirect(request, response, "");
 			break;
-		case DELETE:
+		case REMOVE:
 			Carrier.redirect(request, response, "");
 			break;
 		case LOGIN:
@@ -74,6 +61,11 @@ public class MemberController extends HttpServlet {
 				Carrier.redirect(request, response, "/member.do?action=move&page=user_login_form");
 			}
 			break;
+		case MOVE:
+			System.out.println("MOVE");
+			System.out.println(Action.valueOf(Receiver.cmd.getAction().toUpperCase()));
+			Carrier.forward(request, response);
+		break;
 		default:
 			break;
 		}

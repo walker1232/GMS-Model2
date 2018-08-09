@@ -23,209 +23,69 @@ public class MemberDAOImpl implements MemberDAO{
 	private static MemberDAO instance = new MemberDAOImpl();
 	public static MemberDAO getinstance() {return instance;}
 	
-	private MemberDAOImpl() {
+	private MemberDAOImpl() {}
+
+	@Override
+	public void insert(MemberBean member) {
+		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	public void insertMember(MemberBean member) {
-		try {
-				DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeUpdate(String.format(MemberQuery.INSERT_MEMBER.toString(), member.getMemID(), 
-																					   member.getPassword(), 
-																					   member.getName(), 
-																					   member.getSsn(),
-																					   member.getTeamID(),
-																					   member.getAge(),
-																					   member.getRoll(),
-																					   member.getGender()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	@Override
-	public List<MemberBean> selectAllMemberlist() {
-		List<MemberBean> memList = new ArrayList<>();
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(MemberQuery.SELECT_ALL.toString());
-			MemberBean mem = null;
-			while(rs.next()) {
-				mem = new MemberBean();
-				mem.setAge(rs.getString("AGE"));
-				mem.setMemID(rs.getString("MEMID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setSsn(rs.getString("SSN"));
-				mem.setTeamID(rs.getString("TEAMID"));
-				mem.setGender(rs.getString("GENDER"));
-				memList.add(mem);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if(countMember()==memList.size()) {
-			/*System.out.println("전체 리스트 인원 호출 성공\n");*/
-		}
-		return memList;
-	}
-
-	@Override
-	public List<MemberBean> selectMemberByName(String name) {
+	public List<MemberBean> selectSome(Map<?, ?> param) {
+		System.out.println("6. 서비스임플로부터 넘어온 param : "+ param);
 		QueryTemplate q = new PstmtQuery();
 		List<MemberBean> list = new ArrayList<>();
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("column", name.split("/")[0]);
-		map.put("value", name.split("/")[1]);
-		map.put("table", Domain.MEMBER);
-		System.out.println("이름 :"+name);
+		map.put("beginRow", param.get("beginRow"));
+		map.put("endRow", param.get("endRow"));
+		map.put("key", param.get("pageList"));
+		System.out.println("7.시작행 beginRow : " + param.get("beginRow"));
+		System.out.println("8.끝나는행 endRow : " + param.get("endRow"));
 		q.play(map);
-		for(Object s: q.getList()) {
-			list.add((MemberBean)s);
+		for(Object s : q.getList()) {
+			list.add((MemberBean) s);
 		}
+		System.out.println("10.MemberDAOImpl에 있는 list : "+ list);
 		return list;
 	}
 
 	@Override
-	public MemberBean selectById(String id) {
-		MemberBean mem = null;
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_ID.toString(), id));
-			while(rs.next()) {
-				mem = new MemberBean();
-				mem.setAge(rs.getString("AGE"));
-				mem.setMemID(rs.getString("MEMID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setSsn(rs.getString("SSN"));
-				mem.setTeamID(rs.getString("TEAMID"));
-				mem.setGender(rs.getString("GENDER"));
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return mem;
+	public MemberBean selectOne(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public int countMember() {
+	public int count() {
 		int count = 0;
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-			.getConnection()
-			.createStatement()
-			.executeQuery(MemberQuery.COUNT_MEMBER.toString());
-			while(rs.next()) {
-				count = rs.getInt("count");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		QueryTemplate q = new PstmtQuery();
+		HashMap<String, Object>map = new HashMap<>();
+		map.put("key", "count");
+		q.play(map);
+		count = q.getList().size();
 		return count;
 	}
 
 	@Override
-	public void updateMember(MemberBean member) {
-		System.out.println("업데이트"+ member.getPassword());
-		System.out.println("업데이트"+ member.getMemID());
-		try {
-			
-			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-			.getConnection()
-			.createStatement()
-			.executeUpdate(String.format(MemberQuery.UPDATE_MEMBER.toString()
-					, member.getPassword()
-					, member.getTeamID()
-					, member.getRoll()
-					, member.getMemID()));
-			System.out.println("완료");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void update(Map<?, ?> param) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteMember(MemberBean member) {
-		try {
-			DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-			.getConnection()
-			.createStatement()
-			.executeUpdate(String.format(MemberQuery.DELETE_MEMBER.toString(), member.getMemID(), member.getPassword()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void delete(MemberBean member) {
+		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
 	public MemberBean login(MemberBean member) {
-		MemberBean m = null;
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection().createStatement().executeQuery(String.format(MemberQuery.LOGIN.toString(), member.getMemID(), member.getPassword()));
-			while(rs.next()) {
-					m = new MemberBean();
-					m.setMemID(rs.getString("MEMID"));
-					m.setTeamID(rs.getString("TEAMID"));
-					m.setName(rs.getString("NAME"));
-					m.setSsn(rs.getString("SSN"));
-					m.setRoll(rs.getString("ROLL"));
-					m.setPassword(rs.getString("PASSWORD"));
-				};
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return m;
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 
-	@Override
-	public List<MemberBean> selectList(Map<?, ?> param) {
-		/*System.out.println("============시작행============");
-		System.out.println("============마지막행===========");*/
-		List<MemberBean> memsList = new ArrayList<>();
-		try {
-			ResultSet rs = DatabaseFactory.createDatabase(Vendor.ORACLE, DBConstant.USER_NAME, DBConstant.PASSWORD)
-					.getConnection()
-					.createStatement()
-					.executeQuery(String.format(MemberQuery.SELECT_LIST.toString(), param.get("beginRow"), param.get("endRow")));
-			MemberBean mems = null;
-			while(rs.next()) {
-				mems = new MemberBean();
-				mems.setAge(rs.getString("AGE"));
-				mems.setGender(rs.getString("GENDER"));
-				mems.setMemID(rs.getString("MEMID"));
-				mems.setName(rs.getString("NAME"));
-				mems.setPassword(rs.getString("PASSWORD"));
-				mems.setRoll(rs.getString("ROLL"));
-				mems.setSsn(rs.getString("SSN"));
-				mems.setTeamID(rs.getString("TEAMID"));
-				memsList.add(mems);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		/*QueryTemplate q = new PstmtQuery();
-		List<MemberBean> list = new ArrayList<>();
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("beginRow", )*/
-		return memsList;
-	}
 
 	
 

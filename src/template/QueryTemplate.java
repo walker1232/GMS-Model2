@@ -20,6 +20,7 @@ public abstract class QueryTemplate {
 
 	 //template method		//final을 사용하면 후손으로 갈 수 없음
 	 public final void play(HashMap<String, Object>map){
+		 System.out.println("9.QueryTemplate에서 받은 map: "+map);
 		 this.pstmt = null;
 		 this.list = new ArrayList<>();
 		 this.map = map;

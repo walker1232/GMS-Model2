@@ -3,30 +3,6 @@ var router = (()=>{
     			return {move : x=>{
         			location.href = x.ctx + '/' + x.domain + '.do?action=' + x.action + '&page=' + x.page}}; // key값과 value Json String : Json Value 
     	})();
-/*var service = (()=>{
-	return {
-		nullChecker : x=>{
-			if()
-		};
-		joinValidation : x=>{
-			if(x.getMemid === ""){
-				alert('id를 공백으로 하면 안됩니다');
-				return false;
-			}else if(x.getPassword === ""){
-				alert('pass를 공백으로 하면 안됩니다');
-				return false;
-			}else if(x.getName === ""){
-				alert('name를 공백으로 하면 안됩니다');
-				return false;
-			}else if(x.getSsn === ""){
-				alert('ssn를 공백으로 하면 안됩니다');
-				return false;
-			}else{
-				return true;
-			}
-		}
-	};
-})();*/
 
 var service = (()=>{
     return {
@@ -64,6 +40,32 @@ var service = (()=>{
     	// anonymous function
 /* json은 object value로 속성과 기능이 모두 올 수 있다 */
 /*var admin = (()=>{return{};})();*/
+
+var common = (()=>{
+	return{
+		main : x => {
+			document.getElementById('moveAdmin').addEventListener('click', ()=>{	
+				alert('Admin 이벤트 체크 !!');
+				var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
+				if(isAdmin){
+					var password = prompt('관리자비번을 입력 바랍니다');
+					if(password == 1){
+						router.move({
+							 ctx : x,
+							 domain : 'admin',
+							 action : 'search',
+							 page : 'main'
+						});
+					}else{
+						alert('비밀번호가 틀렸습니다');
+					}
+				}else{
+					alert('관리자만 접근이 허용됩니다');
+				}
+			});
+		}
+	};})();
+
 var admin = (()=>{
 	return{
 		check : x=>{
@@ -138,12 +140,12 @@ var admin = (()=>{
 			
 			document.getElementById('pageNumber').addEventListener('click', function() {
                 alert('click TEST');
-                location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+                location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
             });
 			
 			document.getElementById('pageNumber').addEventListener('click', function() {
                 alert('click TEST');
-                location.href=x+'/admin.do?action=list&page=main&page=main&pageNumber='+this.getAttribute('id');
+                location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
             });
 		}
 		

@@ -1,65 +1,72 @@
 package enums;
 
+import template.ColumnFinder;
+
 public enum MemberQuery {
-	LOGIN, INSERT_MEMBER, COUNT_MEMBER, UPDATE_MEMBER, DELETE_MEMBER, SELECT_ALL, SELECT_NAME, SELECT_ID, SELECT_LIST;
+	ADD, 
+	LIST, SEARCH, RETRIEVE, COUNT, 
+	UPDATE, DELETE, 
+	LOGIN;
 	@Override
 	public String toString() {
 		String query = "";
 		switch(this) {
 		case LOGIN:
-			query = "SELECT MEMID ,	"
+			query = "SELECT " + ColumnFinder.find(Domain.MEMBER)
+					+"	FROM MEMBER 	"
+					+"	WHERE MEMID LIKE '%s' AND PASSWORD LIKE '%s'	";
+			/*query = "SELECT MEMID ,	"
 					+"	TEAMID,	"
 					+"	NAME,	"
 					+"	AGE,	" 
 					+"	ROLL,	"
 					+"	PASSWORD 	"
 					+"	FROM MEMBER 	"
-					+"	WHERE MEMID LIKE '%s' AND PASSWORD LIKE '%s'	";
+					+"	WHERE MEMID LIKE '%s' AND PASSWORD LIKE '%s'	";*/
 			break;
-		case INSERT_MEMBER:
-			query = "INSERT INTO member(MEMID, PASSWORD, NAME, SSN, TEAMID, AGE, ROLL, GENDER)	VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+		case ADD:
+			query = "INSERT INTO member("+ColumnFinder.find(Domain.MEMBER)+")"+	" VALUES " + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			/*query = "INSERT INTO member(MEMID, PASSWORD, NAME, SSN, TEAMID, AGE, ROLL, GENDER, SUBJECT)	VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";*/
 			break;
 		/*case INSERT_MEMBER:
 			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN)	VALUES('%s', '%s', '%s', '%s')";
 			break;*/
-		case COUNT_MEMBER:
+		case COUNT:
 			query = " SELECT COUNT(*) AS count FROM MEMBER ";
 			break;
-		case UPDATE_MEMBER:
+		case UPDATE:
 			query = " UPDATE MEMBER SET PASSWORD = '%s', TEAMID = '%s', ROLL = '%s' " + 
 					"	WHERE MEMID LIKE '%s' ";
 			break;
-		case DELETE_MEMBER:
-			query = " DELETE FROM MEMBER WHERE MEMID LIKE '%s' and PASSWORD LIKE '%s' ";
+		case DELETE:
+			query = " DELETE FROM MEMBER WHERE MEMID LIKE ? and PASSWORD LIKE ? ";
 			break;
-		case SELECT_ALL:
-			query = "SELECT MEMID,	"
-					+"	TEAMID,	"
-					+"	NAME,	"
-					+"	AGE,	" 
-					+"	ROLL,	"
-					+"  SSN,	"
-					+"	PASSWORD,	"
-					+"  GENDER	"
-					+"	FROM MEMBER ";
+		case SEARCH:
+			query = "	SELECT T.*	" + 
+					"	FROM	" + 
+					"    	(SELECT ROWNUM SEQ, M.*	" + 
+					"    	FROM MEMBER M " + 
+					"       WHERE %s LIKE ?	"+	
+					"    	ORDER BY SEQ DESC) T	" + 
+					"	WHERE T.SEQ BETWEEN ? AND ?	";
 			break;
-		case SELECT_NAME:
+		/*case SEARCH:
 			query = " SELECT MEMID, TEAMID, AGE, ROLL, NAME, PASSWORD, SSN, GENDER " + 
 					" FROM MEMBER " + 
 					" WHERE  %s  LIKE '%%%s%%' "; 
-			break;
-		case SELECT_ID:
+			break;*/
+		case RETRIEVE:
 			query = " SELECT MEMID, TEAMID, AGE, ROLL, NAME, PASSWORD , SSN, GENDER " +
 					" FROM MEMBER " +
 					" WHERE MEMID LIKE '%s' ";
 			break;
-		case SELECT_LIST:
+		case LIST:
 			query = "	SELECT T.*	" + 
 					"	FROM	" + 
 					"    	(SELECT ROWNUM SEQ, M.*	" + 
 					"    	FROM MEMBER M " + 
 					"    	ORDER BY SEQ DESC) T	" + 
-					"	WHERE T.SEQ BETWEEN %s AND %s	";
+					"	WHERE T.SEQ BETWEEN ? AND ?	";
 		}
 		
 		return query;

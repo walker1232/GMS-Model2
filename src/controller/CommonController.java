@@ -17,28 +17,17 @@ public class CommonController extends HttpServlet {
     	CTX, CSS, JS, IMG
     }
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	/*int i = 0;
-    	for(Resources r: Resources.values()) {
-    		if(i==0) {
-    			request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath());
-    		}else {
-    		System.out.println(request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-    		request.getSession().setAttribute(r.toString().toLowerCase(), request.getContextPath()+"/resources/"+r.toString().toLowerCase());
-    	}
-    	i++;
-    		HttpSession session = request.getSession();
-    		session.setAttribute(Domain.CTX.toString(), request.getContextPath());
-            request.getRequestDispatcher(Domain.WEBPATH.toString()+Domain.MAIN.toString()).forward(request,response);
-    	}*/
     	 int i = 0;
          for (Resources r : Resources.values()) {
              request.getSession().setAttribute(r.toString().toLowerCase().toString(),
                  (i==0)?
-                     request.getContextPath(): 
-                     request.getContextPath()+
-                     "/resources/" + r.toString().toLowerCase());
+                     request.getContextPath() : 
+                     request.getContextPath()
+                     	+"/resources/" + r.toString().toLowerCase());
              i++;
          }
-         request.getRequestDispatcher(Term.WEBPATH.toString()+Term.MAIN.toString()).forward(request, response);
+         //request.getRequestDispatcher(Term.WEBPATH.toString()+request.getServletPath().split("/")[1].split("\\.")[0]+Term.MAIN.toString()).forward(request, response);
+         request.getRequestDispatcher(Term.WEBPATH.toString()+request.getServletPath().split("/")[1].split("\\.")[0]+Term.MAIN.toString()).forward(request, response);
+         
     }
 }

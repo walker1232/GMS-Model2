@@ -14,16 +14,16 @@ public class Commander{
 			System.out.println("----무브진입----");
 			cmd = new MoveCommand(request);
 			break;
-		case JOIN:
+		case ADD:
 			System.out.println("----조인진입----");
 			cmd = new CreateCommand(request);
 			break;
-		case UPDATE:
+		case MODIFY:
 			System.out.println("----수정 진입----");
 			//cmd = new UpdateCommand(domain, action, page);
-			cmd = new UpdateCommand(request);
+			cmd = new ModifyCommand(request);
 			break;
-		case DELETE:
+		case REMOVE:
 			System.out.println("----삭제 진입----");
 			//cmd = new DeleteCommand(domain, action, page);
 			cmd = new DeleteCommand(request);
@@ -32,10 +32,6 @@ public class Commander{
 			System.out.println("----로그인 진입----");
 			//cmd = new LoginCommand(domain, action, page);
 			cmd = new LoginCommand(request);
-			break;
-		case LIST:
-			System.out.println("----회원목록 진입----");
-			cmd = new ListCommand(request);
 			break;
 		case SEARCH:
 			System.out.println("----팀원 목록 진입----");
