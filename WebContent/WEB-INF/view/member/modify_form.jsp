@@ -13,12 +13,8 @@
 </style>
 </head>
 <body>
-<div id="wrapper">
-	<div id="header">
-		<jsp:include page="../common/title_box.jsp"/>
-		<jsp:include page="../common/login_box.jsp"/>
-		<jsp:include page="../common/menu_box.jsp"/>
-	</div> <!-- header end -->
+
+	
 	<div id="content">
 	<form id="update_form" >
 	<table style="width:50%">
@@ -67,10 +63,8 @@
 	<input type="button" id="updateConfirmBtn" value="수정확인"/>
 </form>
 	</div> <!-- content end -->
-	<div id ="footer">
-		<jsp:include page="../common/footer_box.jsp"/>
-	</div>
-</div>
+	
+
 	<h3>비밀번호 변경</h3>
 
 

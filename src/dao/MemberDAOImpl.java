@@ -13,8 +13,7 @@ import enums.MemberQuery;
 import enums.Vendor;
 import factory.DatabaseFactory;
 import pool.DBConstant;
-import template.PstmtQuery;
-import template.QueryTemplate;
+import template.*;
 /*<!-- "oracle.jdbc.driver.OracleDriver" -->
 <!-- "jdbc:oracle:thin:@localhost:1521:xe" -->
 <!-- "kkk" -->
@@ -22,49 +21,49 @@ import template.QueryTemplate;
 public class MemberDAOImpl implements MemberDAO{
 	private static MemberDAO instance = new MemberDAOImpl();
 	public static MemberDAO getinstance() {return instance;}
-	
+	private QueryTemplate q;
 	private MemberDAOImpl() {}
 
 	@Override
 	public void insert(MemberBean member) {
-		// TODO Auto-generated method stub
+		System.out.println("DAO에서의 member "+member);
+		q = new AddQuery();
+		Map<String, Object> param = new HashMap<>();
+		param.put("member", member);
+		q.play(param);
 		
 	}
 
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
-		System.out.println("6. 서비스임플로부터 넘어온 param : "+ param);
-		QueryTemplate q = new PstmtQuery();
+		/*System.out.println("6. 서비스임플로부터 넘어온 param : "+ param);*/
 		List<MemberBean> list = new ArrayList<>();
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("beginRow", param.get("beginRow"));
-		map.put("endRow", param.get("endRow"));
-		map.put("key", param.get("pageList"));
-		System.out.println("7.시작행 beginRow : " + param.get("beginRow"));
-		System.out.println("8.끝나는행 endRow : " + param.get("endRow"));
-		q.play(map);
+		System.out.println("DAO에서의 param: "+ param);
+		q = new SearchQuery();
+		q.play(param);
 		for(Object s : q.getList()) {
 			list.add((MemberBean) s);
 		}
-		System.out.println("10.MemberDAOImpl에 있는 list : "+ list);
 		return list;
 	}
 
 	@Override
 	public MemberBean selectOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("DAO에서의 아이디 "+id);
+		q = new RetrieveQuery();
+		Map<String, Object> param = new HashMap<>();
+		param.put("memid", id);
+		q.play(param);
+		return q.getO();
 	}
 
 	@Override
 	public int count() {
-		int count = 0;
-		QueryTemplate q = new PstmtQuery();
-		HashMap<String, Object>map = new HashMap<>();
-		map.put("key", "count");
-		q.play(map);
-		count = q.getList().size();
-		return count;
+		System.out.println("DAO count 진입");
+		q = new CountQuery();
+		q.play();
+		System.out.println("DAO에서의 카운트: "+ q.getNumber());
+		return q.getNumber();
 	}
 
 	@Override

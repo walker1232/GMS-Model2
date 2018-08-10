@@ -12,14 +12,14 @@
 		router.move({ctx : '${ctx}', 
 					 domain : 'member', 
 					 action : 'move', 
-					 page : 'user_login_form'}); // var x = ['${ctx}', 'member', 'move', 'user_login_form']; 이걸 한번에 쓴 것
+					 page : 'login'}); // var x = ['${ctx}', 'member', 'move', 'user_login_form']; 이걸 한번에 쓴 것
 	});
 	document.getElementById('moveJoinForm').addEventListener('click', function(){
 		alert('조인 이벤트 체크!!');
 		router.move({ctx : '${ctx}', 
 					 domain : 'member', 
 					 action : 'move', 
-					 page : 'join_form'});
+					 page : 'add'});
 	});
 	
 

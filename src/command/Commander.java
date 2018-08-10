@@ -16,21 +16,21 @@ public class Commander{
 			break;
 		case ADD:
 			System.out.println("----조인진입----");
-			cmd = new CreateCommand(request);
+			cmd = new AddCommand(request);
 			break;
 		case MODIFY:
 			System.out.println("----수정 진입----");
-			//cmd = new UpdateCommand(domain, action, page);
+			
 			cmd = new ModifyCommand(request);
 			break;
 		case REMOVE:
 			System.out.println("----삭제 진입----");
-			//cmd = new DeleteCommand(domain, action, page);
-			cmd = new DeleteCommand(request);
+			
+			cmd = new RemoveCommand(request);
 			break;
 		case LOGIN:
 			System.out.println("----로그인 진입----");
-			//cmd = new LoginCommand(domain, action, page);
+			
 			cmd = new LoginCommand(request);
 			break;
 		case SEARCH:

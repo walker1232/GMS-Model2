@@ -23,10 +23,9 @@ public class AdminController extends HttpServlet {
     
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("여기는 AdminController");
-		System.out.println("contextpath----"+request.getContextPath());
-		System.out.println("servlet----"+request.getServletPath());
+		
 		Receiver.init(request, response);
-		System.out.println("액션:"+Receiver.cmd.getAction());
+		
 		switch(Action.valueOf(Receiver.cmd.getAction().toUpperCase())) {
 		case RETRIEVE:
 			System.out.println("#####admin Retrieve#######");

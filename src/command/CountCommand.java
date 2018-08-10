@@ -24,6 +24,8 @@ public class CountCommand extends Command{
 		System.out.println("----총인원수 들어옴----");
 		System.out.println("총 인원:"+MemberServiceImpl.getinstance().count());
 		System.out.println("----총인원수 성공----");
+		System.out.println("카운트 커맨드 진입========================");
+		request.setAttribute("count", MemberServiceImpl.getinstance().count());
 		super.execute();
 	}
 }

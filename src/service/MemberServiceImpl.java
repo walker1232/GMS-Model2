@@ -12,7 +12,8 @@ public class MemberServiceImpl implements MemberService{
 	private MemberServiceImpl() {}
 	@Override
 	public void create(MemberBean member) {
-		// TODO Auto-generated method stub
+		System.out.println("3.MemberDAOImpl 호출");
+		MemberDAOImpl.getinstance().insert(member);
 		
 	}
 	@Override
@@ -22,13 +23,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public MemberBean retrieve(String id) {
-		// TODO Auto-generated method stub
+		MemberDAOImpl.getinstance().selectOne(id);
 		return null;
 	}
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return MemberDAOImpl.getinstance().count();
 	}
 	@Override
 	public void modify(Map<?, ?> param) {

@@ -1,13 +1,16 @@
 package command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import domain.MemberBean;
 import enums.Domain;
 import service.MemberServiceImpl;
 
-public class CreateCommand extends Command{
-	public CreateCommand(HttpServletRequest request) {
+public class AddCommand extends Command{
+	public AddCommand(HttpServletRequest request) {
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
@@ -18,19 +21,23 @@ public class CreateCommand extends Command{
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("회원가입에 들어옴!!!");
+			System.out.println("1.ADDCOMMAND수행 초기진입");
+			Map<String, Object> paramMap = new HashMap<>();
 			MemberBean mem = new MemberBean();
-			mem.setName(request.getParameter("name"));
-			mem.setPassword(request.getParameter("pass"));
-			mem.setSsn(request.getParameter("ssn"));
 			mem.setMemID(request.getParameter("memid"));
 			mem.setTeamID(request.getParameter("teamid"));
+			mem.setName(request.getParameter("name"));
+			mem.setSsn(request.getParameter("ssn"));
 			mem.setAge(request.getParameter("age"));
 			mem.setRoll(request.getParameter("roll"));
+			mem.setPassword(request.getParameter("pass"));
+			/*mem.setSubject(ParamMap.getValues(request, "subject"));*/
+			mem.setSubject(request.getParameter("subject"));
 			mem.setGender(request.getParameter("gender"));
-			mem.setSubject(ParamMap.getValues(request, "subject"));
+			System.out.println("*%^&*%*"+request.getParameter("subject"));
+			System.out.println("2.ADDCOMMAND MemberServiceImpl 호출 "+ mem);
 			MemberServiceImpl.getinstance().create(mem);
-			System.out.println("회원가입 성공!!!");
+			
 			break;
 		default:
 			break;

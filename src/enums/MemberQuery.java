@@ -26,7 +26,7 @@ public enum MemberQuery {
 			break;
 		case ADD:
 			query = "INSERT INTO member("+ColumnFinder.find(Domain.MEMBER)+")"+	" VALUES " + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			/*query = "INSERT INTO member(MEMID, PASSWORD, NAME, SSN, TEAMID, AGE, ROLL, GENDER, SUBJECT)	VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";*/
+			/*query = "INSERT INTO member(MEMID, PASSWORD, NAME, SSN, TEAMID, AGE, ROLL, GENDER)	VALUES(?, ?, ?, ?, ?, ?, ?, ?)";*/
 			break;
 		/*case INSERT_MEMBER:
 			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN)	VALUES('%s', '%s', '%s', '%s')";
@@ -46,7 +46,7 @@ public enum MemberQuery {
 					"	FROM	" + 
 					"    	(SELECT ROWNUM SEQ, M.*	" + 
 					"    	FROM MEMBER M " + 
-					"       WHERE %s LIKE ?	"+	
+					"       WHERE ? LIKE ?	"+	
 					"    	ORDER BY SEQ DESC) T	" + 
 					"	WHERE T.SEQ BETWEEN ? AND ?	";
 			break;

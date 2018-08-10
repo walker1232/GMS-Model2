@@ -10,7 +10,7 @@ public class MemberBean {
 	@Override
 	public String toString() {
 		return "MemberBean [memID=" + memID + ", teamID=" + teamID + ", name=" + name + ", ssn=" + ssn + ", age=" + age
-				+ ", roll=" + roll + ", gender=" + gender + ", password=" + password + "]";
+				+ ", roll=" + roll + ", gender=" + gender + ", password=" + password + ", subject=" + subject + "]";
 	}
 
 	

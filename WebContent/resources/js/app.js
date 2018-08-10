@@ -46,7 +46,13 @@ var common = (()=>{
 		main : x => {
 			document.getElementById('moveAdmin').addEventListener('click', ()=>{	
 				alert('Admin 이벤트 체크 !!');
-				var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
+				router.move({
+					 ctx : x,
+					 domain : 'admin',
+					 action : 'search',
+					 page : 'main'
+				});
+				/*var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
 				if(isAdmin){
 					var password = prompt('관리자비번을 입력 바랍니다');
 					if(password == 1){
@@ -61,7 +67,7 @@ var common = (()=>{
 					}
 				}else{
 					alert('관리자만 접근이 허용됩니다');
-				}
+				}*/
 			});
 		}
 	};})();
@@ -134,11 +140,11 @@ var admin = (()=>{
 			for(var j of document.querySelectorAll('.pageNumber')){
 				service.addClass(j, 'cursor fontColorBlue');
 				j.addEventListener('click', function(){
-					location.href=x+'/admin.do?action=list&'+'page=main&pageNumber='+this.getAttribute('id');
+					location.href=x+'/admin.do?action=search&'+'page=main&pageNumber='+this.getAttribute('id');
 				});
 			};
 			
-			document.getElementById('pageNumber').addEventListener('click', function() {
+			/*document.getElementById('pageNumber').addEventListener('click', function() {
                 alert('click TEST');
                 location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
             });
@@ -146,7 +152,7 @@ var admin = (()=>{
 			document.getElementById('pageNumber').addEventListener('click', function() {
                 alert('click TEST');
                 location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
-            });
+            });*/
 		}
 		
 	};})();

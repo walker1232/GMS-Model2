@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import domain.MemberBean;
 import enums.Domain;
 import enums.MemberQuery;
+import factory.Database;
 import factory.DatabaseFactory;
 
 public class PstmtQuery extends QueryTemplate{
@@ -13,8 +14,12 @@ public class PstmtQuery extends QueryTemplate{
 	@Override
 	void initialize() {
 		switch((String)map.get("key")) {
-		case "pageList":
-			map.put("sql", MemberQuery.LIST.toString());
+		case "list":
+			if(map.get("searchOption")!=null) {
+				map.put("sql", MemberQuery.SEARCH.toString());
+			}else {
+				map.put("sql", MemberQuery.LIST.toString());
+			}
 			break;
 		case "count":
 			map.put("sql", MemberQuery.COUNT.toString());
@@ -35,16 +40,38 @@ public class PstmtQuery extends QueryTemplate{
 	@Override
 	void startPlay() {
 		switch((String)map.get("key")) {
-		case "pageList":
-			System.out.println("pagenagin하는 템플릿 startPlay");
-			System.out.println(map.get("sql"));
+		case "list":
+			/*System.out.println("pagenagin하는 템플릿 startPlay");
+			System.out.println(map.get("sql"));*/
+			if(map.get("searchOption")!=null) {
+				try {
+					pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
+					pstmt.setString(1, (String)map.get("searchOption").toString());
+					pstmt.setString(2, (String)map.get("searchWord").toString());
+					pstmt.setString(3, (String)map.get("beginRow").toString());
+					pstmt.setString(4, (String)map.get("endRow").toString());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else {
+				try {
+					pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
+					pstmt.setString(1, (String)map.get("beginRow").toString());
+					pstmt.setString(2, (String)map.get("endRow").toString());
+					/*System.out.println("StartPlay 안에서의 beginRow: "+ map.get("beginRow"));
+					System.out.println("StartPlay 안에서의 endRow: "+ map.get("endRow"));*/
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			break;
+		case "count":
 			try {
 				pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
-				pstmt.setString(1, (String)map.get("beginRow").toString());
-				pstmt.setString(2, (String)map.get("endRow").toString());
-				System.out.println("StartPlay 안에서의 beginRow: "+ map.get("beginRow"));
-				System.out.println("StartPlay 안에서의 endRow: "+ map.get("endRow"));
-				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,26 +96,44 @@ public class PstmtQuery extends QueryTemplate{
 	@Override
 	void endPlay() {
 		System.out.println("-----endpaly");
-		try {
-			ResultSet rs = pstmt.executeQuery();
-			MemberBean mem = null;
+		ResultSet rs;
+		MemberBean mem;
+		switch((String)map.get("key")) {
+		case "list":
+			try {
+				rs = pstmt.executeQuery();
+				mem = null;
+					while(rs.next()) {
+						mem = new MemberBean();
+						mem.setMemID(rs.getString("MEMID"));
+						mem.setTeamID(rs.getString("TEAMID"));
+						mem.setName(rs.getString("NAME"));
+						mem.setAge(rs.getString("AGE"));
+						mem.setGender(rs.getString("GENDER"));
+						mem.setRoll(rs.getString("ROLL"));
+						mem.setPassword(rs.getString("PASSWORD"));
+						mem.setSsn(rs.getString("SSN"));
+						list.add(mem);
+					}
+					System.out.println("list"+list);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		break;
+		case "count":
+			try {
+				rs = pstmt.executeQuery();
 				while(rs.next()) {
-					mem = new MemberBean();
-					mem.setMemID(rs.getString("MEMID"));
-					mem.setTeamID(rs.getString("TEAMID"));
-					mem.setName(rs.getString("NAME"));
-					mem.setAge(rs.getString("AGE"));
-					mem.setGender(rs.getString("GENDER"));
-					mem.setRoll(rs.getString("ROLL"));
-					mem.setPassword(rs.getString("PASSWORD"));
-					mem.setSsn(rs.getString("SSN"));
-					list.add(mem);
+					list.add(rs.getInt("count"));
 				}
-				System.out.println("list"+list);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			break;
 		}
+		
 		
 	}
 	

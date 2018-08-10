@@ -8,26 +8,17 @@
 	<title>삭제</title>
 </head>
 <body>
-<div id="wrapper">
-	<div id="header">
-		<jsp:include page="../common/title_box.jsp"/>
-		<jsp:include page="../common/login_box.jsp"/>
-		<jsp:include page="../common/menu_box.jsp"/>
-	</div> <!-- header end -->
+
 	<div id="content">
 		<form id="delete_form">
 			<!-- ID: <input type="text" name="memid"><br /> -->
 			<font color="black">비밀번호 재입력: </font><input type="text" name="pass">
-			<!-- <input type="hidden" name="action" value="delete"> -->
-			<!-- <input type="hidden" name="page" value="delete_result"><br /> -->
 			<input id="deleteFormBtn" type="button" value="delete">
 		</form>
 		
 	</div> <!-- content end -->
-	<div id ="footer">
-		<jsp:include page="../common/footer_box.jsp"/>
-	</div>
-</div>
+	
+
 	<script>
 		var form = document.getElementById('delete_form');
 		document.getElementById('deleteFormBtn').addEventListener('click', function(){

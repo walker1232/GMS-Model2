@@ -3,18 +3,10 @@
 <!-- memID, teamID, name, 800101-1, roll, password -->
 <!doctype html>
 <html lang="en">
-	<jsp:include page="../common/head.jsp"/>
-<!-- <head>
-	<meta charset="UTF-8" />
-	<title>회원가입화면</title>
-</head> -->
+	
 <body>
-<div id="wrapper">
-	<div id="header">
-		<jsp:include page="../common/title_box.jsp"/>
-		<jsp:include page="../common/login_box.jsp"/>
-		<jsp:include page="../common/menu_box.jsp"/>
-	</div> <!-- header end -->
+
+	
 	<div id="content">
 		<h1>회원가입</h1>
 	<form id="join_form" name="join_form" >
@@ -48,10 +40,8 @@
 		<input id="JoinFormBtn" type=button value="Join">
 	</form>
 	</div> <!-- content end -->
-	<div id ="footer">
-		<jsp:include page="../common/footer_box.jsp"/>
-	</div>
-</div>
+	
+
 	
 	<script>
 		document.getElementById('JoinFormBtn').addEventListener('click', function(){
@@ -61,21 +51,7 @@
 				var form = document.getElementById('join_form');
 				form.action = "${ctx}/member.do";
 				form.method = "post";
-				/* var json = {'key', 'value'};
-				var val = json.k; */
-				// json은 객체를 담을 수 있다
-				/* var json = {
-						name : ['action', 'gender', 'age'],
-						value : ['join', '', '']
-				};
-				for(var i = 0; i < json.name.length; i++){
-					var node = document.createElement('input');
-					node.setAttribute('type', 'hidden');
-					node.setAttribute('name', json.name[i]);
-					node.setAttribute('value', json.value[i]);
-					form.appendChild(node);
-				}; */
-				var arr = [{name:'action', value:'join'}, 
+				var arr = [{name:'action', value:'add'}, 
 						   {name:'gender'}, 
 						   {name:'age'}
 						   ];
