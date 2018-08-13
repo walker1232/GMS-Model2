@@ -23,8 +23,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public MemberBean retrieve(String id) {
-		MemberDAOImpl.getinstance().selectOne(id);
-		return null;
+		
+		return MemberDAOImpl.getinstance().selectOne(id);
 	}
 	@Override
 	public int count() {
@@ -38,13 +38,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public void remove(MemberBean member) {
-		// TODO Auto-generated method stub
+		MemberDAOImpl.getinstance().delete(member);
 		
 	}
 	@Override
 	public boolean login(MemberBean member) {
-		// TODO Auto-generated method stub
-		return false;
+		return MemberDAOImpl.getinstance().login(member) != null;
 	}
 	
 	

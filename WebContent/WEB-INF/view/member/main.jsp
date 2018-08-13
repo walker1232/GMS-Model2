@@ -21,6 +21,12 @@
 			<c:when test="${pagename eq 'search' }">
 				<jsp:include page="search.jsp"/>
 			</c:when>
+			<c:when test="${pagename eq 'delete' }">
+				<jsp:include page="remove_form.jsp"/>
+			</c:when>
+			<c:when test="${pagename eq 'update' }">
+				<jsp:include page="modify_form.jsp"/>
+			</c:when>
 		<c:otherwise>
              <jsp:include page="retrieve.jsp"/>
         </c:otherwise>

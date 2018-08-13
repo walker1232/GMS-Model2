@@ -18,7 +18,6 @@ public class RetrieveCommand extends Command{
 	public void execute() {
 		System.out.println("1.RetrieveCommand 진입");
 		request.setAttribute("retrieve", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
-		MemberServiceImpl.getinstance().retrieve(request.getParameter("memid"));
 		System.out.println("2.RetrieveCommand에서 받은 아이디"+request.getParameter("memid"));
 		super.execute();
 	}

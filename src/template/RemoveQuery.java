@@ -1,16 +1,26 @@
 package template;
 
+import java.sql.SQLException;
+
+import enums.MemberQuery;
+
 public class RemoveQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		// TODO Auto-generated method stub
+		map.put("sql", MemberQuery.DELETE.toString());
 		
 	}
 
 	@Override
 	void startPlay() {
-		// TODO Auto-generated method stub
+		try {
+			pstmt.setString(1, (String)map.get("memid"));
+			pstmt.setString(2, (String)map.get("pass"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

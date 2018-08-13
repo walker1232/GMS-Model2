@@ -11,17 +11,31 @@ public class SearchQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		/*map.put("sql", (!map.containsKey("column"))? MemberQuery.LIST.toString() : MemberQuery.SEARCH.toString());*/
-		if(map.get("searchOption")!=null) {
+		map.put("sql", (!map.containsKey("column"))? MemberQuery.LIST.toString() : MemberQuery.SEARCH.toString());
+		/*if(map.get("searchOption")!=null) {
 			map.put("sql", MemberQuery.SEARCH.toString());
 		}else {
 			map.put("sql", MemberQuery.LIST.toString());
-		}
+		}*/
 	}
 
 	@Override
 	void startPlay() {
-		if(map.get("searchOption")!=null) {
+		try {
+			int i = 0;
+			if(map.containsKey("column")) {
+				i++;
+				pstmt.setString(i, "%"+(String)map.get("searchWord").toString()+"%");
+			}
+			i++;
+			pstmt.setString(i, (String)map.get("beginRow").toString());
+			i++;
+			pstmt.setString(i, (String)map.get("endRow").toString());
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*if(map.get("searchOption")!=null) {
 			try {
 				pstmt = DatabaseFactory.createDatabase2(map).getConnection().prepareStatement((String)map.get("sql"));
 				pstmt.setString(1, (String)map.get("searchOption").toString());
@@ -41,7 +55,7 @@ public class SearchQuery extends QueryTemplate{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 	}
 

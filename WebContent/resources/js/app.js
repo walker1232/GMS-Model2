@@ -123,7 +123,7 @@ var admin = (()=>{
 		/* document.getElementById('searchBtn').addEventListener('',function(){}); 콜백 함수 기본형*/
 			document.getElementById('searchBtn').addEventListener('click',function(){
 			 location.href = (document.getElementById('searchOption').value === 'memid') ?
-					 x+'/admin.do?action=retrieve&page=memberDetail&memid='+document.getElementById('searchWord').value
+					 x+'/admin.do?action=retrieve&page=retrieve&memid='+document.getElementById('searchWord').value
 					: 
 						location.href = x+'/admin.do?action=search&page=main&searchOption='+document.getElementById('searchOption').value+'&searchWord='+document.getElementById('searchWord').value
 								;
@@ -133,7 +133,8 @@ var admin = (()=>{
 			for(var i of document.querySelectorAll('.username')){
 				service.addClass(i, 'cursor fontColorBlue');
 				i.addEventListener('click', function(){
-					location.href=x+'/admin.do?action=retrieve&'+'page=memberDetail&memid='+this.getAttribute('id');
+					alert('이름 눌렀을 때'+x);
+					location.href=x+'/member.do?action=retrieve&'+'page=retrieve&memid='+this.getAttribute('id');
 					//여기서의 this는 x[i]를 호출하는 녀석 
 				});
 			};
@@ -144,15 +145,6 @@ var admin = (()=>{
 				});
 			};
 			
-			/*document.getElementById('pageNumber').addEventListener('click', function() {
-                alert('click TEST');
-                location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
-            });
-			
-			document.getElementById('pageNumber').addEventListener('click', function() {
-                alert('click TEST');
-                location.href=x+'/admin.do?action=search&page=main&page=main&pageNumber='+this.getAttribute('id');
-            });*/
 		}
 		
 	};})();

@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-
 	<div id="content">
 		<div>
 	<a id="myPage2MoveToUpdate">UPDATE FORM 이동</a>
 	<a id="myPage2MoveToDelete">DELETE FORM 이동</a>
 		</div>
-<div>
+	<div>
 <h1>마이페이지 진입</h1>
 <table style="width:50%">
 	<tr>
@@ -46,12 +44,12 @@
 		router.move({ctx : '${ctx}',
 					 domain : 'member',
 					 action : 'move',
-					 page : 'update_form'});
+					 page : 'update'});
 	});
 	document.getElementById('myPage2MoveToDelete').addEventListener('click', function(){
 		router.move({ctx : '${ctx}',
 					 domain : 'member',
 					 action : 'move',
-					 page : 'delete_form'});
+					 page : 'delete'});
 	});
 </script>

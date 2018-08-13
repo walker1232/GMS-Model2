@@ -2,7 +2,7 @@
 <% String ctx = application.getContextPath(); %>
 <!doctype html>
 <html lang="en">
-	<jsp:include page="../common/head.jsp"/>
+	<%-- <jsp:include page="../common/head.jsp"/> --%>
 
 <body>
 	

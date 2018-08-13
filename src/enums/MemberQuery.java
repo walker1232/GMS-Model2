@@ -14,7 +14,7 @@ public enum MemberQuery {
 		case LOGIN:
 			query = "SELECT " + ColumnFinder.find(Domain.MEMBER)
 					+"	FROM MEMBER 	"
-					+"	WHERE MEMID LIKE '%s' AND PASSWORD LIKE '%s'	";
+					+"	WHERE MEMID LIKE ? AND PASSWORD LIKE ?	";
 			/*query = "SELECT MEMID ,	"
 					+"	TEAMID,	"
 					+"	NAME,	"
@@ -46,7 +46,7 @@ public enum MemberQuery {
 					"	FROM	" + 
 					"    	(SELECT ROWNUM SEQ, M.*	" + 
 					"    	FROM MEMBER M " + 
-					"       WHERE ? LIKE ?	"+	
+					"       WHERE %s LIKE ?	"+	
 					"    	ORDER BY SEQ DESC) T	" + 
 					"	WHERE T.SEQ BETWEEN ? AND ?	";
 			break;

@@ -41,10 +41,10 @@ public class MemberDAOImpl implements MemberDAO{
 		System.out.println("DAO에서의 param: "+ param);
 		q = new SearchQuery();
 		q.play(param);
-		for(Object s : q.getList()) {
+		/*for(Object s : q.getList()) {
 			list.add((MemberBean) s);
-		}
-		return list;
+		}*/
+		return (List<MemberBean>)(Object)q.getList();
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class MemberDAOImpl implements MemberDAO{
 		Map<String, Object> param = new HashMap<>();
 		param.put("memid", id);
 		q.play(param);
-		return q.getO();
+		return (MemberBean)q.getO();
 	}
 
 	@Override
@@ -74,13 +74,19 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void delete(MemberBean member) {
-		// TODO Auto-generated method stub
+		q = new RemoveQuery();
+		Map<String, Object> param = new HashMap<>();
+		param.put("member", member);
+		q.play(param);
 		
 	}
 
 	@Override
 	public MemberBean login(MemberBean member) {
-		// TODO Auto-generated method stub
+		q = new LoginQuery();
+		Map<String, Object> param = new HashMap<>();
+		param.put("login", member);
+		q.play(param);
 		return null;
 	}
 	

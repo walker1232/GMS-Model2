@@ -31,6 +31,29 @@ public class SearchCommand extends Command{
         PageProxy pxy = new PageProxy();
         int pn = (pageNumber==null)? 1: Integer.parseInt(pageNumber);
         pxy.carrayOut(pn);
+        Pagination page = pxy.getPagination();
+        if(request.getParameter("searchOption")!=null) {
+        	paramMap.put("column", String.valueOf(request.getParameter("searchOption")));
+        }
+        String[] arr1 = {"domain", "beginRow", "endRow", "searchWord"};
+        String[] arr2 = {domain, 
+        				 String.valueOf(page.getBeginRow()), 
+        				 String.valueOf(page.getEndRow()), 
+        				 String.valueOf(request.getParameter("searchWord"))
+        				 };
+        for(int i=0; i<arr1.length; i++) {
+        	paramMap.put(arr1[i], arr2[i]);
+        }
+        System.out.println("searchCommand에서의 param "+paramMap);
+        request.setAttribute("page", page);
+        request.setAttribute("list", MemberServiceImpl.getinstance().search(paramMap));
+        
+		/*System.out.println("1. SearchCommand ENTER");
+		Map<String,Object> paramMap = new HashMap<>();
+        String pageNumber = request.getParameter("pageNumber");
+        PageProxy pxy = new PageProxy();
+        int pn = (pageNumber==null)? 1: Integer.parseInt(pageNumber);
+        pxy.carrayOut(pn);
         System.out.println("2 PageNum : "+ pxy.getPagination().getPageNumber());
         Pagination page = pxy.getPagination();
         paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
@@ -42,7 +65,7 @@ public class SearchCommand extends Command{
         System.out.println("4. PageNum endRow : "+paramMap.get("endRow"));
         request.setAttribute("page", page);
         System.out.println("searchCommand에서의 param "+paramMap);
-        request.setAttribute("list", MemberServiceImpl.getinstance().search(paramMap));
+        request.setAttribute("list", MemberServiceImpl.getinstance().search(paramMap));*/
         super.execute();
 		
 		
