@@ -9,6 +9,7 @@ import enums.Action;
 public class Commander{
 	public static Command order(HttpServletRequest request, HttpServletResponse response) {
 		Command cmd = null;
+		System.out.println("ACTION "+request.getParameter("action").toUpperCase());
 		switch(Action.valueOf(request.getParameter("action").toUpperCase())) {
 		case MOVE:
 			System.out.println("----무브진입----");
@@ -45,7 +46,10 @@ public class Commander{
 			System.out.println("----총 인원수----");
 			cmd = new CountCommand(request);
 			break;
-		
+		case FILEUPLOAD:
+			System.out.println("----무브진입----");
+			cmd = new MoveCommand(request);
+			break;
 		default:
 			break;
 		}

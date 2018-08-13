@@ -11,11 +11,11 @@
 	<tr>
 		<td rowspan="3"></td>
 		<td>아이디</td>
-		<td colspan="2">${user.memID}</td>
+		<td colspan="2">${retrieve.memID}</td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td colspan="2">${user.name}</td>
+		<td colspan="2">${retrieve.name}</td>
 	</tr>
 	<tr>
 		<td>비번</td>
@@ -23,15 +23,15 @@
 	</tr>
 	<tr>
 		<td>나이</td>
-		<td>${user.age}</td>
+		<td>${retrieve.age}</td>
 		<td>팀명</td>
-		<td>${user.teamID}</td>
+		<td>${retrieve.teamID}</td>
 	</tr>
 	<tr>
 		<td>성별</td>
-		<td>${user.gender}</td>
+		<td>${retrieve.gender}</td>
 		<td>역할</td>
-		<td>${user.roll}</td>
+		<td>${retrieve.roll}</td>
 	</tr>
 </table>
 </div>
@@ -44,12 +44,12 @@
 		router.move({ctx : '${ctx}',
 					 domain : 'member',
 					 action : 'move',
-					 page : 'update'});
+					 page : 'modify'});
 	});
 	document.getElementById('myPage2MoveToDelete').addEventListener('click', function(){
 		router.move({ctx : '${ctx}',
 					 domain : 'member',
 					 action : 'move',
-					 page : 'delete'});
+					 page : 'remove'});
 	});
 </script>

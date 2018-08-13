@@ -12,19 +12,19 @@
 	</div> <!-- header end -->
 	<div id="content">
 		<c:choose>
-			<c:when test="${pagename eq 'add' }">
+			<c:when test="${pagename eq 'add'}">
 				<jsp:include page="add_form.jsp"/>
 			</c:when>
-			<c:when test="${pagename eq 'login' }">
+			<c:when test="${pagename eq 'login'}">
 			<jsp:include page="login.jsp"/>
 			</c:when>
-			<c:when test="${pagename eq 'search' }">
+			<c:when test="${pagename eq 'search'}">
 				<jsp:include page="search.jsp"/>
 			</c:when>
-			<c:when test="${pagename eq 'delete' }">
+			<c:when test="${pagename eq 'remove'}">
 				<jsp:include page="remove_form.jsp"/>
 			</c:when>
-			<c:when test="${pagename eq 'update' }">
+			<c:when test="${pagename eq 'modify'}">
 				<jsp:include page="modify_form.jsp"/>
 			</c:when>
 		<c:otherwise>

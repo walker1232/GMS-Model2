@@ -53,19 +53,17 @@ public class AddQuery extends QueryTemplate{
 	void endPlay() {
 		try {
 			ResultSet rs = pstmt.executeQuery();
-			MemberBean mem = null;
 			while(rs.next()) {
-				mem = new MemberBean();
-				mem.setMemID(rs.getString("MEMID"));
-				mem.setTeamID(rs.getString("TEAMID"));
-				mem.setName(rs.getString("NAME"));
-				mem.setSsn(rs.getString("SSN"));
-				mem.setAge(rs.getString("AGE"));
-				mem.setRoll(rs.getString("ROLL"));
-				mem.setPassword(rs.getString("PASSWORD"));
-				mem.setSubject(rs.getString("SUBJECT"));
-				mem.setGender(rs.getString("GENDER"));
-				System.out.println(mem);
+				o = new MemberBean();
+				((MemberBean)o).setAge(rs.getString("AGE"));
+				((MemberBean)o).setGender(rs.getString("GENDER"));
+				((MemberBean)o).setMemID(rs.getString("MEMID"));
+				((MemberBean)o).setName(rs.getString("NAME"));
+				((MemberBean)o).setPassword(rs.getString("PASSWORD"));
+				((MemberBean)o).setRoll(rs.getString("ROLL"));
+				((MemberBean)o).setSsn(rs.getString("SSN"));
+				((MemberBean)o).setTeamID(rs.getString("TEAMID"));
+				System.out.println(o);
 			}
 			
 		} catch (SQLException e) {

@@ -18,7 +18,7 @@ public class RemoveCommand extends Command{
 	public void execute() {
 		switch(Domain.valueOf(domain.toUpperCase())) {
 		case MEMBER:
-			System.out.println("-------------------회원탈퇴 들어옴----------------------");
+			System.out.println("1.REMOVE COMMAND 진입");
 			MemberBean mem = new MemberBean();
 			mem.setMemID(((MemberBean)request.getSession().getAttribute("user")).getMemID());
 			mem.setPassword(request.getParameter("pass"));

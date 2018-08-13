@@ -23,7 +23,6 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public MemberBean retrieve(String id) {
-		
 		return MemberDAOImpl.getinstance().selectOne(id);
 	}
 	@Override

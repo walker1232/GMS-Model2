@@ -34,15 +34,17 @@ public class LoginCommand extends Command{
 			break;
 		}*/
 		
-		super.execute();
+		
 		MemberBean mem = new MemberBean();
 		mem.setMemID(request.getParameter("memid")); // 여기서의 request는 command의 request
 		mem.setPassword(request.getParameter("pass"));
+		System.out.println("로그인 커맨드 진입");
 		if(MemberServiceImpl.getinstance().login(mem)) {
 			request.setAttribute("match", "TRUE");
 			request.getSession().setAttribute("user", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 		}else {
 			request.setAttribute("match", "FALSE");
 		}
+		super.execute();
 	}
 }

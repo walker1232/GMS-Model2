@@ -2,6 +2,7 @@ package template;
 
 import java.sql.SQLException;
 
+import domain.MemberBean;
 import enums.MemberQuery;
 
 public class RemoveQuery extends QueryTemplate{
@@ -9,14 +10,15 @@ public class RemoveQuery extends QueryTemplate{
 	@Override
 	void initialize() {
 		map.put("sql", MemberQuery.DELETE.toString());
-		
+		System.out.println(map.get("sql"));
 	}
 
 	@Override
 	void startPlay() {
 		try {
-			pstmt.setString(1, (String)map.get("memid"));
-			pstmt.setString(2, (String)map.get("pass"));
+			MemberBean member = (MemberBean) map.get("member");
+			pstmt.setString(1, member.getMemID());
+			pstmt.setString(2, member.getPassword());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,7 +28,12 @@ public class RemoveQuery extends QueryTemplate{
 
 	@Override
 	void endPlay() {
-		// TODO Auto-generated method stub
+		try {
+			pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

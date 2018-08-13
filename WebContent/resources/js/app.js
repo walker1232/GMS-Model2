@@ -27,19 +27,7 @@ var service = (()=>{
         }
     }
 })();
-/*var service = (()=>{
-	return {
-		validation : x=>{
-			
-		},
-		aaa : x=>{
-			
-		}
-	};
-})(); 확장 */
-    	// anonymous function
-/* json은 object value로 속성과 기능이 모두 올 수 있다 */
-/*var admin = (()=>{return{};})();*/
+
 
 var common = (()=>{
 	return{
@@ -52,22 +40,6 @@ var common = (()=>{
 					 action : 'search',
 					 page : 'main'
 				});
-				/*var isAdmin = confirm('관리자입니까');	// window 생략가능 따라서 BOM의 method 밑도 끝도없이 쓰면 BOM의 method
-				if(isAdmin){
-					var password = prompt('관리자비번을 입력 바랍니다');
-					if(password == 1){
-						router.move({
-							 ctx : x,
-							 domain : 'admin',
-							 action : 'search',
-							 page : 'main'
-						});
-					}else{
-						alert('비밀번호가 틀렸습니다');
-					}
-				}else{
-					alert('관리자만 접근이 허용됩니다');
-				}*/
 			});
 		}
 	};})();
@@ -120,7 +92,7 @@ var admin = (()=>{
 		
 		
 			
-		/* document.getElementById('searchBtn').addEventListener('',function(){}); 콜백 함수 기본형*/
+		
 			document.getElementById('searchBtn').addEventListener('click',function(){
 			 location.href = (document.getElementById('searchOption').value === 'memid') ?
 					 x+'/admin.do?action=retrieve&page=retrieve&memid='+document.getElementById('searchWord').value
@@ -133,9 +105,8 @@ var admin = (()=>{
 			for(var i of document.querySelectorAll('.username')){
 				service.addClass(i, 'cursor fontColorBlue');
 				i.addEventListener('click', function(){
-					alert('이름 눌렀을 때'+x);
 					location.href=x+'/member.do?action=retrieve&'+'page=retrieve&memid='+this.getAttribute('id');
-					//여기서의 this는 x[i]를 호출하는 녀석 
+					
 				});
 			};
 			for(var j of document.querySelectorAll('.pageNumber')){
@@ -189,20 +160,7 @@ var member = (()=>{
    					member.setGender(x);
    					
    				}
-    		       /*loginValidation : x=>{
-    					if(x.getMemid === ''){
-    			 			alert('id를 공백으로 하면 안됩니다');
-    			 			return false;
-    			 		}else if(x.getPassword === ''){
-    			 			alert('pass를 공백으로 하면 안됩니다');
-    			 			return false;
-    			 		}else{
-    			 			return true;
-    			 		}
-    				}*/
     		}
 })();
 
-    	//function (){}();
-    	//(function (){})();	// Goofy 멍청 하지만 요즘에는 이 방식을 써야 할 때도 있음
-    	//(function (){}());	// Groovy 근사한
+    	

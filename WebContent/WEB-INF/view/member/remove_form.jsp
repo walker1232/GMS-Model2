@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String ctx = application.getContextPath(); %>
-<%-- <jsp:include page="../common/head.jsp"/> --%>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>삭제</title>
-</head>
-<body>
-
 	<div id="content">
 		<form id="delete_form">
 			<!-- ID: <input type="text" name="memid"><br /> -->
@@ -28,7 +19,7 @@
 				form.action = "${ctx}/member.do";
 				form.method = "post";
 				var node = document.createElement('input');
-				node.innerHTML = '<input type="hidden" name="action" value="delete" />';
+				node.innerHTML = '<input type="hidden" name="action" value="remove" />';
 				form.appendChild(node);
 				form.submit();
 			}else{
@@ -38,5 +29,3 @@
 		
 		
 	</script>
-</body>
-</html>

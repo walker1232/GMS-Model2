@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String ctx = application.getContextPath(); %>
-<!-- memID, teamID, name, 800101-1, roll, password -->
-<!doctype html>
-<html lang="en">
-	
-<body>
 
-	
 	<div id="content">
 		<h1>회원가입</h1>
 	<form id="join_form" name="join_form" >
@@ -73,5 +67,3 @@
 			}
 		});
 	</script>
-</body>
-</html>

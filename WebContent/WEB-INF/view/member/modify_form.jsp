@@ -1,31 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String ctx = application.getContextPath(); %>
-<%-- <jsp:include page="../common/head.jsp"/> --%>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>비밀번호 변경</title>
+
+
 	<style>
 	table, th, td {
     border: 1px solid black;
-}
-</style>
-</head>
-<body>
+	}
+	</style>
 
 	
 	<div id="content">
 	<form id="update_form" >
 	<table style="width:50%">
 	<tr>
-		<td rowspan="3"></td>
+		<td rowspan="3" colspan="2">img</td>
 		<td>아아디</td>
-		<td colspan="2">${user.memID}</td>
+		<td>${user.memID}</td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td >${user.name}</td>
+		<td>${user.name}</td>
 	</tr>
 	<tr>
 		<td>비번</td>
@@ -34,7 +28,6 @@
 	<tr>
 		<td>나이</td>
 		<td>${user.age}</td>
-		<td>팀명</td>
 		<td>${user.teamID}</td>
 		<td>
 			<input type="radio" id="teamid_1" name="teamid" value="none" checked="checked"/>없음
@@ -47,7 +40,6 @@
 	<tr>
 		<td>성별</td>
 		<td>${user.gender}</td>
-		<td>역할</td>
 		<td>${user.roll}</td>
 		<td>
 			<select name="roll" id="roll">
@@ -64,8 +56,10 @@
 </form>
 	</div> <!-- content end -->
 	
-
-	<h3>비밀번호 변경</h3>
+	<form method="POST" enctype="multipart/form-data" action="${ctx}/member.do?action=fileupload&page=retrieve">
+	    파일업로드: <input type="file" name="upfile"><br/>
+	  <input type="submit" value="파일업로드">
+	</form>
 
 
 <script>
@@ -94,5 +88,4 @@
 	        } 
 	    }
 </script>
-</body>
-</html>
+

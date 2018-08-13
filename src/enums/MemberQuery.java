@@ -58,7 +58,7 @@ public enum MemberQuery {
 		case RETRIEVE:
 			query = " SELECT MEMID, TEAMID, AGE, ROLL, NAME, PASSWORD , SSN, GENDER " +
 					" FROM MEMBER " +
-					" WHERE MEMID LIKE '%s' ";
+					" WHERE MEMID LIKE ? ";
 			break;
 		case LIST:
 			query = "	SELECT T.*	" + 

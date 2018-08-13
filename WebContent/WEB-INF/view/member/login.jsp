@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% String ctx = application.getContextPath(); %>
-<!doctype html>
-<html lang="en">
-	<%-- <jsp:include page="../common/head.jsp"/> --%>
 
-<body>
-	
-	
-	
 	<div id="content">
 		<%-- <jsp:include page="../common/content_box.jsp"/> --%>
 		<form id="user_login_form" name="user_login_form">
@@ -37,5 +30,3 @@
  		/* form.submit(); */
  	});
 	</script>
-</body>
-</html>

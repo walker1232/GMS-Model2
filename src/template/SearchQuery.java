@@ -11,7 +11,7 @@ public class SearchQuery extends QueryTemplate{
 
 	@Override
 	void initialize() {
-		map.put("sql", (!map.containsKey("column"))? MemberQuery.LIST.toString() : MemberQuery.SEARCH.toString());
+		map.put("sql", (!map.containsKey("column"))? MemberQuery.LIST.toString() : String.format(MemberQuery.SEARCH.toString(), map.get("column")));
 		/*if(map.get("searchOption")!=null) {
 			map.put("sql", MemberQuery.SEARCH.toString());
 		}else {

@@ -44,28 +44,11 @@ public class SearchCommand extends Command{
         for(int i=0; i<arr1.length; i++) {
         	paramMap.put(arr1[i], arr2[i]);
         }
-        System.out.println("searchCommand에서의 param "+paramMap);
+        System.out.println("SEARCH COMMAND 에서의 PARAMMAP "+paramMap);
         request.setAttribute("page", page);
         request.setAttribute("list", MemberServiceImpl.getinstance().search(paramMap));
         
-		/*System.out.println("1. SearchCommand ENTER");
-		Map<String,Object> paramMap = new HashMap<>();
-        String pageNumber = request.getParameter("pageNumber");
-        PageProxy pxy = new PageProxy();
-        int pn = (pageNumber==null)? 1: Integer.parseInt(pageNumber);
-        pxy.carrayOut(pn);
-        System.out.println("2 PageNum : "+ pxy.getPagination().getPageNumber());
-        Pagination page = pxy.getPagination();
-        paramMap.put("beginRow", String.valueOf(page.getBeginRow()));
-        paramMap.put("endRow", String.valueOf(page.getEndRow()));
-        paramMap.put("table", Domain.MEMBER);
-        paramMap.put("searchOption", request.getParameter("searchOption"));
-        paramMap.put("searchWord", request.getParameter("searchWord"));
-        System.out.println("3. PageNum beginRow : "+paramMap.get("beginRow"));
-        System.out.println("4. PageNum endRow : "+paramMap.get("endRow"));
-        request.setAttribute("page", page);
-        System.out.println("searchCommand에서의 param "+paramMap);
-        request.setAttribute("list", MemberServiceImpl.getinstance().search(paramMap));*/
+		
         super.execute();
 		
 		

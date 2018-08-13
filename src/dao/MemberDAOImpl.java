@@ -37,13 +37,14 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public List<MemberBean> selectSome(Map<?, ?> param) {
 		/*System.out.println("6. 서비스임플로부터 넘어온 param : "+ param);*/
-		List<MemberBean> list = new ArrayList<>();
+		//List<MemberBean> list = new ArrayList<>();
 		System.out.println("DAO에서의 param: "+ param);
 		q = new SearchQuery();
 		q.play(param);
 		/*for(Object s : q.getList()) {
 			list.add((MemberBean) s);
 		}*/
+		System.out.println("DAO에서 리턴 직전 "+(List<MemberBean>)(Object)q.getList());
 		return (List<MemberBean>)(Object)q.getList();
 	}
 
@@ -54,6 +55,7 @@ public class MemberDAOImpl implements MemberDAO{
 		Map<String, Object> param = new HashMap<>();
 		param.put("memid", id);
 		q.play(param);
+		System.out.println("DAO에서 리턴 직전  "+(MemberBean)q.getO());
 		return (MemberBean)q.getO();
 	}
 
@@ -74,20 +76,21 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void delete(MemberBean member) {
+		System.out.println("DAO에서 받은 삭제 정보 "+member);
 		q = new RemoveQuery();
 		Map<String, Object> param = new HashMap<>();
 		param.put("member", member);
 		q.play(param);
-		
 	}
 
 	@Override
 	public MemberBean login(MemberBean member) {
+		System.out.println("DAO에서의 로그인 정보 "+member);
 		q = new LoginQuery();
 		Map<String, Object> param = new HashMap<>();
 		param.put("login", member);
 		q.play(param);
-		return null;
+		return (MemberBean)q.getO();
 	}
 	
 
