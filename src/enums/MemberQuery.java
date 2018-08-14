@@ -3,7 +3,7 @@ package enums;
 import template.ColumnFinder;
 
 public enum MemberQuery {
-	ADD, 
+	ADD, IMGADD, 
 	LIST, SEARCH, RETRIEVE, COUNT, 
 	UPDATE, DELETE, 
 	LOGIN;
@@ -27,6 +27,9 @@ public enum MemberQuery {
 		case ADD:
 			query = "INSERT INTO member("+ColumnFinder.find(Domain.MEMBER)+")"+	" VALUES " + "(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			/*query = "INSERT INTO member(MEMID, PASSWORD, NAME, SSN, TEAMID, AGE, ROLL, GENDER)	VALUES(?, ?, ?, ?, ?, ?, ?, ?)";*/
+			break;
+		case IMGADD:
+			query = "INSERT INTO image( IMG_SEQ, IMG_NAME, EXTENSION, MEMID )"+	" VALUES " + "(IMG_SEQ.NEXTVAL, ?, ?, ?)";
 			break;
 		/*case INSERT_MEMBER:
 			query = "INSERT INTO member(MEM_ID, PASSWORD, NAME, SSN)	VALUES('%s', '%s', '%s', '%s')";

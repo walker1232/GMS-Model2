@@ -23,6 +23,10 @@ public class RetrieveCommand extends Command{
 		System.out.println("1.RetrieveCommand 진입");
 		request.setAttribute("retrieve", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
 		request.setAttribute("pagename", request.getParameter("page"));
+		String img = "";
+		// ImageServiceImpl.getInstance().retrieve();
+		String imgPath = "/upload/"+img;
+		request.setAttribute("img", imgPath);
 		System.out.println("2.RetrieveCommand에서 받은 아이디"+request.getParameter("memid"));
 		
 		super.execute();

@@ -10,7 +10,7 @@
 <table style="width:50%">
 	<tr>
 		<td rowspan="3"></td>
-		<td>아이디</td>
+		<td><img src="${img}/${profile}" alt="" />이미지</td>
 		<td colspan="2">${retrieve.memID}</td>
 	</tr>
 	<tr>
