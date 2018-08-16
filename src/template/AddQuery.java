@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import domain.ImageBean;
 import domain.MemberBean;
+import enums.ImageQuery;
 import enums.MemberQuery;
 import factory.DatabaseFactory;
 
@@ -14,7 +15,7 @@ public class AddQuery extends QueryTemplate{
 	void initialize() {
 		System.out.println("AddQuery 시작 진입");
 		if(map.get("image")!=null) {
-			map.put("sql", MemberQuery.IMGADD.toString());
+			map.put("sql", ImageQuery.IMGADD.toString());
 			System.out.println(map.get("sql"));
 		}else {
 			map.put("sql", MemberQuery.ADD.toString());
@@ -60,7 +61,8 @@ public class AddQuery extends QueryTemplate{
 				
 				pstmt.executeQuery();
 			}else {
-				ResultSet rs = pstmt.executeQuery();
+				pstmt.executeQuery();
+				/*ResultSet rs = pstmt.executeQuery();
 				while(rs.next()) {
 					o = new MemberBean();
 					((MemberBean)o).setAge(rs.getString("AGE"));
@@ -72,7 +74,7 @@ public class AddQuery extends QueryTemplate{
 					((MemberBean)o).setSsn(rs.getString("SSN"));
 					((MemberBean)o).setTeamID(rs.getString("TEAMID"));
 					System.out.println(o);
-				}
+				}*/
 			}
 			
 			

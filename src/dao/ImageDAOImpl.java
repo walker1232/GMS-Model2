@@ -7,6 +7,7 @@ import java.util.Map;
 import domain.ImageBean;
 import template.AddQuery;
 import template.QueryTemplate;
+import template.RetrieveQuery;
 
 public class ImageDAOImpl implements ImageDAO{
 	private static ImageDAO instance = new ImageDAOImpl();
@@ -29,9 +30,14 @@ public class ImageDAOImpl implements ImageDAO{
 	}
 
 	@Override
-	public ImageBean selectOne(String seq) {
-		// TODO Auto-generated method stub
-		return null;
+	public ImageBean selectOne(String id) {
+		System.out.println("이미지 DAO에서 받은 정보 "+id);
+		q = new RetrieveQuery();
+		Map<String, Object> param = new HashMap<>();
+		param.put("id", id);
+		q.play(param);
+		System.out.println("이미지 DAO에서 리턴직전 정보 "+(ImageBean)q.getO());
+		return (ImageBean)q.getO();
 	}
 	
 

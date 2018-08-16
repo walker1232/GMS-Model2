@@ -42,4 +42,18 @@ FROM
 	
 	select * from image;
 	
+	SELECT *
+	FROM member
+	WHERE MEMID like 'test1234';
 	
+	
+	select *
+	from member;
+	
+	SELECT ROWNUM, A.*
+	FROM
+		(SELECT *
+		FROM IMAGE
+		WHERE MEMID LIKE ?
+		ORDER BY IMG_SEQ DESC) A
+	WHERE ROWNUM < 2;

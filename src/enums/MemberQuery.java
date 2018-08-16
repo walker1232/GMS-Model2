@@ -4,7 +4,7 @@ import template.ColumnFinder;
 
 public enum MemberQuery {
 	ADD, IMGADD, 
-	LIST, SEARCH, RETRIEVE, COUNT, 
+	LIST, SEARCH, RETRIEVE, COUNT, IMGRETRIEVE,
 	UPDATE, DELETE, 
 	LOGIN;
 	@Override
@@ -38,8 +38,10 @@ public enum MemberQuery {
 			query = " SELECT COUNT(*) AS count FROM MEMBER ";
 			break;
 		case UPDATE:
-			query = " UPDATE MEMBER SET PASSWORD = '%s', TEAMID = '%s', ROLL = '%s' " + 
-					"	WHERE MEMID LIKE '%s' ";
+			query = " UPDATE MEMBER SET %s = ? " + 
+					" WHERE MEMID LIKE ? ";
+			/*query = " UPDATE MEMBER SET PASSWORD = '%s', TEAMID = '%s', ROLL = '%s' " + 
+					"	WHERE MEMID LIKE '%s' ";*/
 			break;
 		case DELETE:
 			query = " DELETE FROM MEMBER WHERE MEMID LIKE ? and PASSWORD LIKE ? ";
@@ -70,6 +72,17 @@ public enum MemberQuery {
 					"    	FROM MEMBER M " + 
 					"    	ORDER BY SEQ DESC) T	" + 
 					"	WHERE T.SEQ BETWEEN ? AND ?	";
+			break;
+		case IMGRETRIEVE:
+			query =
+					 " SELECT ROWNUM, A.* "
+					+" FROM "
+					+"	(SELECT * "
+					+"	FROM IMAGE "
+					+"	WHERE MEMID LIKE ? "
+					+"	ORDER BY IMG_SEQ DESC) A "
+					+" WHERE ROWNUM < 2 ";
+			break;
 		}
 		
 		return query;

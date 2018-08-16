@@ -14,10 +14,7 @@ import enums.Vendor;
 import factory.DatabaseFactory;
 import pool.DBConstant;
 import template.*;
-/*<!-- "oracle.jdbc.driver.OracleDriver" -->
-<!-- "jdbc:oracle:thin:@localhost:1521:xe" -->
-<!-- "kkk" -->
-<!-- "a" -*/
+
 public class MemberDAOImpl implements MemberDAO{
 	private static MemberDAO instance = new MemberDAOImpl();
 	public static MemberDAO getinstance() {return instance;}
@@ -70,7 +67,9 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void update(Map<?, ?> param) {
-		// TODO Auto-generated method stub
+		System.out.println("수정 DAO에서 받은 정보 "+param);
+		q = new ModifyQuery();
+		q.play(param);
 		
 	}
 

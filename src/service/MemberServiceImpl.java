@@ -32,7 +32,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 	@Override
 	public void modify(Map<?, ?> param) {
-		// TODO Auto-generated method stub
+		System.out.println("serviceImple에서 받은 정보 "+param);
+		MemberDAOImpl.getinstance().update(param);
 		
 	}
 	@Override

@@ -94,8 +94,8 @@ var admin = (()=>{
 			
 		
 			document.getElementById('searchBtn').addEventListener('click',function(){
-			 location.href = (document.getElementById('searchOption').value === 'memid') ?
-					 x+'/admin.do?action=retrieve&page=retrieve&memid='+document.getElementById('searchWord').value
+			 location.href = (document.getElementById('searchOption').value === 'none') ?
+					 x+'/admin.do?action=retrieve&page=retrieve'
 					: 
 						location.href = x+'/admin.do?action=search&page=main&searchOption='+document.getElementById('searchOption').value+'&searchWord='+document.getElementById('searchWord').value
 								;

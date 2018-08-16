@@ -9,13 +9,13 @@
 <h1>마이페이지 진입</h1>
 <table style="width:50%">
 	<tr>
-		<td rowspan="3"></td>
-		<td><img src="${img}/${profile}" alt="" />이미지</td>
-		<td colspan="2">${retrieve.memID}</td>
+		<td rowspan="3" width="200" height="150"><img src="${img}/${profile}" width="200" height="150"/></td>
+		<td>아이디</td>
+		<td colspan="2">${user.memID}</td>
 	</tr>
 	<tr>
 		<td>이름</td>
-		<td colspan="2">${retrieve.name}</td>
+		<td colspan="2">${user.name}</td>
 	</tr>
 	<tr>
 		<td>비번</td>
@@ -23,15 +23,15 @@
 	</tr>
 	<tr>
 		<td>나이</td>
-		<td>${retrieve.age}</td>
+		<td>${user.age}</td>
 		<td>팀명</td>
-		<td>${retrieve.teamID}</td>
+		<td>${user.teamID}</td>
 	</tr>
 	<tr>
 		<td>성별</td>
-		<td>${retrieve.gender}</td>
+		<td>${user.gender}</td>
 		<td>역할</td>
-		<td>${retrieve.roll}</td>
+		<td>${user.roll}</td>
 	</tr>
 </table>
 </div>

@@ -13,8 +13,8 @@
 	<form id="update_form" >
 	<table style="width:50%">
 	<tr>
-		<td rowspan="3" colspan="2">img</td>
-		<td>아아디</td>
+		<td rowspan="3" colspan="2" width="200" height="150"><img src="${img}/${profile}" width="200" height="150"/></td>
+		<td>아이디</td>
 		<td>${user.memID}</td>
 	</tr>
 	<tr>
@@ -77,7 +77,7 @@
 		form.action = "${ctx}/member.do";
 		form.method = "post";
 		var node = document.createElement('input');
-		node.innerHTML = '<input type="hidden" name="action" value="update" />';
+		node.innerHTML = '<input type="hidden" name="action" value="modify" />';
 		form.appendChild(node);
 		form.submit();
 	});

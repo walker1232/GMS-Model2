@@ -2,7 +2,9 @@ package command;
 
 import javax.servlet.http.HttpServletRequest;
 
+import domain.ImageBean;
 import domain.MemberBean;
+import service.ImageServiceImple;
 import service.MemberServiceImpl;
 
 public class RetrieveCommand extends Command{
@@ -11,9 +13,6 @@ public class RetrieveCommand extends Command{
 		setRequest(request);
 		setDomain(request.getServletPath().substring(1, request.getServletPath().indexOf(".")));
 		setAction(request.getParameter("action"));
-		System.out.println("##################");
-		System.out.println(domain);
-		System.out.println(action);
 		execute();
 		
 	}
@@ -21,12 +20,16 @@ public class RetrieveCommand extends Command{
 	public void execute() {
 		
 		System.out.println("1.RetrieveCommand 진입");
-		request.setAttribute("retrieve", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
+		request.setAttribute("user", MemberServiceImpl.getinstance().retrieve(request.getParameter("memid")));
+		ImageBean imgBean = ImageServiceImple.getInstance().retrieve(request.getParameter("memid"));
+		if(imgBean != null) {
+			request.setAttribute("profile", "/upload/"+imgBean.getImgName()+"."+imgBean.getExtension());
+		}
 		request.setAttribute("pagename", request.getParameter("page"));
-		String img = "";
+		/*String img = "";
 		// ImageServiceImpl.getInstance().retrieve();
 		String imgPath = "/upload/"+img;
-		request.setAttribute("img", imgPath);
+		request.setAttribute("img", imgPath);*/
 		System.out.println("2.RetrieveCommand에서 받은 아이디"+request.getParameter("memid"));
 		
 		super.execute();
