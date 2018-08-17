@@ -50,6 +50,10 @@ public class Commander{
 			System.out.println("----무브진입----");
 			cmd = new MoveCommand(request);
 			break;
+		case LOGOUT:
+			System.out.println("----로그아웃 진입-----");
+			cmd = new LogoutCommand(request);
+			break;
 		default:
 			break;
 		}

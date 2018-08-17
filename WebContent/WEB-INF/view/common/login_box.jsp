@@ -2,7 +2,8 @@
 
 <div id="login-box">
 			<a id="moveLoginForm" >LOGIN</a> &nbsp;&nbsp;&nbsp;
-			<a id="moveJoinForm" >JOIN</a>
+			<a id="moveJoinForm" >JOIN</a> &nbsp;&nbsp;&nbsp;
+			<a id="moveLogout">LOGOUT</a>
 
 </div>
 <script>
@@ -20,6 +21,12 @@
 					 domain : 'member', 
 					 action : 'move', 
 					 page : 'add'});
+	});
+	document.getElementById('moveLogout').addEventListener('click', function(){
+		alert('로그아웃 이벤트 체크 !!');
+		router.move({ctx : '${ctx}', 
+					 domain : 'member', 
+					 action : 'logout'});
 	});
 	
 

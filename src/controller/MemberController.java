@@ -110,6 +110,9 @@ public class MemberController extends HttpServlet {
 				Carrier.redirect(request, response, "/member.do?action=move&page=login");
 			}
 			break;
+		case LOGOUT:
+			System.out.println("==========LOGOUT===============");
+			Carrier.redirect(request, response, "");
 		case MOVE:
 			System.out.println("MOVE");
 			System.out.println(Action.valueOf(Receiver.cmd.getAction().toUpperCase()));

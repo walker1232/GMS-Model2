@@ -24,12 +24,6 @@ public class ImageDAOImpl implements ImageDAO{
 	}
 
 	@Override
-	public List<ImageBean> selectSome(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ImageBean selectOne(String id) {
 		System.out.println("이미지 DAO에서 받은 정보 "+id);
 		q = new RetrieveQuery();

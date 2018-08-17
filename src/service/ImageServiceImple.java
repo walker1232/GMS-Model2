@@ -18,11 +18,6 @@ public class ImageServiceImple implements ImageService{
 		
 	}
 	@Override
-	public List<ImageBean> search(Map<?, ?> param) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public ImageBean retrieve(String id) {
 		System.out.println("이미지 리트리브에서 받은 정보 "+id);
 		return ImageDAOImpl.getInstance().selectOne(id);

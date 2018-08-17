@@ -40,22 +40,16 @@ public class ModifyCommand extends Command{
 			if(!((MemberBean)request.getSession().getAttribute("user")).getPassword().equals(request.getParameter("pass"))) {
 				param.put("column", "password");
 				param.put("value", request.getParameter("pass"));
-				System.out.println("4.패스워드 수정 조건문 진입");
-				System.out.println("5.수정된 패스워드 값 "+param.get("value"));
 				MemberServiceImpl.getinstance().modify(param);
 			}
 			if(!((MemberBean)request.getSession().getAttribute("user")).getTeamID().equals(request.getParameter("teamid"))) {
 				param.put("column", "teamid");
 				param.put("value", request.getParameter("teamid"));
-				System.out.println("6.팀 수정 조건문 진입");
-				System.out.println("7.수정된 팀 "+param.get("value"));
 				MemberServiceImpl.getinstance().modify(param);
 			}
 			if(!((MemberBean)request.getSession().getAttribute("user")).getRoll().equals(request.getParameter("roll"))) {
 				param.put("column", "roll");
 				param.put("value", request.getParameter("roll"));
-				System.out.println("8.역할 수정 조건문 진입");
-				System.out.println("9.수정된 역할 "+param.get("value"));
 				MemberServiceImpl.getinstance().modify(param);
 			}
 			break;

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import domain.ImageBean;
 import domain.MemberBean;
+import enums.ImageQuery;
 import enums.MemberQuery;
 
 public class RetrieveQuery extends QueryTemplate{
@@ -13,7 +14,7 @@ public class RetrieveQuery extends QueryTemplate{
 	void initialize() {
 		System.out.println("리트리브 쿼리 안에서의 아이디 "+map.get("memid"));
 		if(map.get("id") != null) {
-			map.put("sql", MemberQuery.IMGRETRIEVE.toString());
+			map.put("sql", ImageQuery.IMGRETRIEVE.toString());
 			System.out.println(map.get("sql"));
 		}else {
 			map.put("sql", MemberQuery.RETRIEVE.toString());
