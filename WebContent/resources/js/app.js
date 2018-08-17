@@ -32,6 +32,8 @@ var service = (()=>{
 var common = (()=>{
 	return{
 		main : x => {
+
+			
 			document.getElementById('moveAdmin').addEventListener('click', ()=>{	
 				alert('Admin 이벤트 체크 !!');
 				router.move({

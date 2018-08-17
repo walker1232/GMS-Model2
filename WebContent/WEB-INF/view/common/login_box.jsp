@@ -7,7 +7,6 @@
 
 </div>
 <script>
-
 	document.getElementById('moveLoginForm').addEventListener('click', function(){
 		alert('로그인 이벤트 체크 !!');
 		router.move({ctx : '${ctx}', 
@@ -29,5 +28,5 @@
 					 action : 'logout'});
 	});
 	
-
+	
 </script>
